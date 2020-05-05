@@ -11,7 +11,6 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D _rb;
     private Vector2 _movement;
     private Camera _cam;
-    private Vector2 _mousePos;
     private SpriteRenderer _playerSprite;
     private MouseInput _mouseInput;
 
@@ -34,7 +33,6 @@ public class PlayerMovement : MonoBehaviour
         _movement.x = Input.GetAxisRaw("Horizontal");
         _movement.y = Input.GetAxisRaw("Vertical");
 
-        _mousePos = _cam.ScreenToWorldPoint(Input.mousePosition);
     }
 
     private void CheckSpriteXDirection()

@@ -22,7 +22,7 @@ public class MouseInput : MonoBehaviour
         GetMouseCursorPosition();
     }
 
-    public void GetMouseCursorPosition()
+    private void GetMouseCursorPosition()
     {
         _mousePos = _cam.ScreenToWorldPoint(Input.mousePosition);
 
