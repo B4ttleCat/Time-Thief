@@ -9,21 +9,17 @@ public class PlayerShooting : MonoBehaviour
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private float projectileForce = 10f;
 
-    private Vector2 _mousePos;
     private Rigidbody2D _rb;
-    private Camera _cam;
-
+    private MouseInput _mouseInput;
+    
     void Awake()
     {
-        _cam = Camera.main;
         _rb = GetComponent<Rigidbody2D>();
+        _mouseInput = GetComponent<MouseInput>();
     }
 
     void Update()
     {
-        _mousePos = _cam.ScreenToWorldPoint(Input.mousePosition);
-
-
         if (Input.GetButtonDown("Fire1"))
         {
             Shoot();
@@ -32,14 +28,11 @@ public class PlayerShooting : MonoBehaviour
 
     private void Shoot()
     {
-        Vector2 lookDirection = _mousePos - _rb.position;
-        Debug.DrawLine(transform.position, _mousePos, Color.magenta, 0.5f);
-        float angle = Mathf.Atan2(lookDirection.y, lookDirection.x);
-        projectileSpawnPoint.rotation = quaternion.Euler(0, 0, angle);
+        // call new MouseInput script here
         
-        GameObject projectile = Instantiate(projectilePrefab,
-            projectileSpawnPoint.position,
-            quaternion.Euler(0,0, angle));
+        projectileSpawnPoint.rotation = quaternion.Euler(0, 0, _mouseInput.Angle);
+
+        GameObject projectile = Instantiate(projectilePrefab, projectileSpawnPoint.position,quaternion.Euler(0,0, _mouseInput.Angle));
 
         // Add force to projectile
         Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();
