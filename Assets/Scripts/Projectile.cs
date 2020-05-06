@@ -5,8 +5,16 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
+    private void Start()
+    {
+        Destroy(gameObject, 3f);
+    }
+
     private void OnCollisionEnter2D(Collision2D other)
     {
-        Destroy(gameObject, 5f);
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            Destroy(gameObject);
+        }
     }
 }

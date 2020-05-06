@@ -449,10 +449,6 @@ PrefabInstance:
       propertyPath: _target
       value: 
       objectReference: {fileID: 925650899}
-    - target: {fileID: 173299313, guid: 8de193926c58243fa9285751bf32e870, type: 3}
-      propertyPath: movementSpeed
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 4968286176667351786, guid: 8de193926c58243fa9285751bf32e870,
         type: 3}
       propertyPath: m_Name

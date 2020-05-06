@@ -42,9 +42,9 @@ GameObject:
   - component: {fileID: 5624499450862868870}
   - component: {fileID: 5624499450862868871}
   - component: {fileID: 4693062591952533904}
+  - component: {fileID: 925650905}
   - component: {fileID: 5624499450862868869}
   - component: {fileID: 5624499450862868868}
-  - component: {fileID: 925650905}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -115,6 +115,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.4588622, y: 0.87550455}
   m_EdgeRadius: 0
+--- !u!114 &925650905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5624499450862868864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39161356720fa49f481603de1f9169f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &5624499450862868869
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -145,18 +157,6 @@ MonoBehaviour:
     type: 3}
   projectileForce: 40
   _fireRate: 0.2
---- !u!114 &925650905
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5624499450862868864}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39161356720fa49f481603de1f9169f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &5624499450957444267
 GameObject:
   m_ObjectHideFlags: 0
