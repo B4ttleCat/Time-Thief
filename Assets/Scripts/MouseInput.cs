@@ -24,11 +24,13 @@ public class MouseInput : MonoBehaviour
 
     private void GetMouseCursorPosition()
     {
+        // Convert mouse pos to usable format
         _mousePos = _cam.ScreenToWorldPoint(Input.mousePosition);
 
+        // Get vector for mouse cursor
         LookDirection = _mousePos - _rb.position;
-        // Debug.DrawLine(transform.position, _mousePos, Color.magenta, 0.5f);
+        
+        // Get angle of vector to cursor from player
         Angle = Mathf.Atan2(LookDirection.y, LookDirection.x);
-        Debug.Log(Angle);
     }
 }
