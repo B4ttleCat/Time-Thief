@@ -40,20 +40,7 @@ public class EnemyMovement : MonoBehaviour
         transform.position = Vector2.MoveTowards(transform.position, _targetPos,
             _currentMovementSpeed * Time.deltaTime);
     }
-
-    private void OnCollisionEnter2D(Collision2D other)
-    {
-        if (other.gameObject.CompareTag("Projectile"))
-        {
-            _particleSystem.Play();
-            _particleSystem.transform.parent = null;
-            StartCoroutine(deathDelayTimer());
-            //start coroutine waitforseconds enemyDeathDelay, unparent 
-
-            Destroy(gameObject, enemyDeathDelay + 0.1f);
-        }
-    }
-
+    
     private IEnumerator deathDelayTimer()
     {
         yield return new WaitForSeconds(enemyDeathDelay);
@@ -69,6 +56,19 @@ public class EnemyMovement : MonoBehaviour
         else if (targetDirection.x < 0f)
         {
             _enemySprite.flipX = true;
+        }
+    }
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Projectile"))
+        {
+            gameObject.GetComponent<Collider2D>().enabled = false;
+            _particleSystem.Play();
+            _particleSystem.transform.parent = null;
+            
+            StartCoroutine(deathDelayTimer());
+
+            Destroy(gameObject, enemyDeathDelay + 0.1f);
         }
     }
 }
