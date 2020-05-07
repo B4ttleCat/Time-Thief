@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    private bool _isDestroyed = false; 
+    private bool _isUsed = false; 
     private void Start()
     {
         Destroy(gameObject, 3f);
@@ -13,9 +13,13 @@ public class Projectile : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (!_isDestroyed && other.gameObject.CompareTag("Enemy"))
+        // Attempt to stop projectile killing two enemies
+        // Doesn't work!
+        if (_isUsed) return;
+        
+        if (other.gameObject.CompareTag("Enemy"))
         {
-            _isDestroyed = true;
+            _isUsed = true;
             Destroy(gameObject);
         }
     }

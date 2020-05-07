@@ -136,10 +136,35 @@ PrefabInstance:
       propertyPath: movementSpeed
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 2449842983754785093, guid: 8de193926c58243fa9285751bf32e870,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.2980392
+      objectReference: {fileID: 0}
+    - target: {fileID: 2449842983754785093, guid: 8de193926c58243fa9285751bf32e870,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.7623906
+      objectReference: {fileID: 0}
+    - target: {fileID: 4868790480706007895, guid: 8de193926c58243fa9285751bf32e870,
+        type: 3}
+      propertyPath: m_CollisionDetection
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4868790480706007895, guid: 8de193926c58243fa9285751bf32e870,
+        type: 3}
+      propertyPath: m_BodyType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4868790480706007895, guid: 8de193926c58243fa9285751bf32e870,
+        type: 3}
+      propertyPath: m_Mass
+      value: 0.40173593
+      objectReference: {fileID: 0}
     - target: {fileID: 4968286176667351786, guid: 8de193926c58243fa9285751bf32e870,
         type: 3}
       propertyPath: m_Name
-      value: Enemy (1)
+      value: Enemy Pink
       objectReference: {fileID: 0}
     - target: {fileID: 6445162947682492823, guid: 8de193926c58243fa9285751bf32e870,
         type: 3}
@@ -302,6 +327,21 @@ PrefabInstance:
       propertyPath: movementSpeed
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 4868790480706007895, guid: 8de193926c58243fa9285751bf32e870,
+        type: 3}
+      propertyPath: m_CollisionDetection
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4868790480706007895, guid: 8de193926c58243fa9285751bf32e870,
+        type: 3}
+      propertyPath: m_BodyType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4868790480706007895, guid: 8de193926c58243fa9285751bf32e870,
+        type: 3}
+      propertyPath: m_Mass
+      value: 0.40173593
+      objectReference: {fileID: 0}
     - target: {fileID: 4968286176667351786, guid: 8de193926c58243fa9285751bf32e870,
         type: 3}
       propertyPath: m_Name
@@ -449,10 +489,35 @@ PrefabInstance:
       propertyPath: _target
       value: 
       objectReference: {fileID: 925650899}
+    - target: {fileID: 2449842983754785093, guid: 8de193926c58243fa9285751bf32e870,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.8317693
+      objectReference: {fileID: 0}
+    - target: {fileID: 2449842983754785093, guid: 8de193926c58243fa9285751bf32e870,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.2980392
+      objectReference: {fileID: 0}
+    - target: {fileID: 4868790480706007895, guid: 8de193926c58243fa9285751bf32e870,
+        type: 3}
+      propertyPath: m_CollisionDetection
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4868790480706007895, guid: 8de193926c58243fa9285751bf32e870,
+        type: 3}
+      propertyPath: m_BodyType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4868790480706007895, guid: 8de193926c58243fa9285751bf32e870,
+        type: 3}
+      propertyPath: m_Mass
+      value: 0.40173593
+      objectReference: {fileID: 0}
     - target: {fileID: 4968286176667351786, guid: 8de193926c58243fa9285751bf32e870,
         type: 3}
       propertyPath: m_Name
-      value: Enemy
+      value: Enemy Yellow
       objectReference: {fileID: 0}
     - target: {fileID: 6445162947682492823, guid: 8de193926c58243fa9285751bf32e870,
         type: 3}
