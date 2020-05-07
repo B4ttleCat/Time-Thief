@@ -16,7 +16,7 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] private float phase4MoveSpeed;
     
     [SerializeField] private float enemyDeathDelay;
-    [SerializeField] private float kickBackForce = -20f;
+    [SerializeField] private float kickBackForce = 20f;
 
     private Rigidbody2D _rb;
     private float _currentMaxMoveSpeed;
@@ -36,6 +36,7 @@ public class EnemyMovement : MonoBehaviour
     private void Start()
     {
         _currentMaxMoveSpeed = phase2MoveSpeed;
+        _target = GameObject.FindWithTag("Player");
     }
 
     void Update()
@@ -77,7 +78,7 @@ public class EnemyMovement : MonoBehaviour
 
         if (_isDead)
         {
-            MoveEnemy(kickBackForce);
+            MoveEnemy(-kickBackForce);
         }
     }
 
@@ -113,6 +114,7 @@ public class EnemyMovement : MonoBehaviour
         {
             // Collisions
             gameObject.GetComponent<Collider2D>().enabled = false;
+            _rb.isKinematic = true;
 
             // FX
             _particleSystem.Play();

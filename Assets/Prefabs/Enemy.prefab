@@ -125,10 +125,10 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4968286176667351786}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 1
-  m_UseAutoMass: 1
+  m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0.5
   m_AngularDrag: 0
@@ -176,12 +176,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad7ea3d68cc9b40f58cbf369033c464a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _target: {fileID: 0}
+  _target: {fileID: 5624499450862868864, guid: b4c712d70ace74a96ac5bc22734f3697, type: 3}
   phase1MoveSpeed: 4
   phase2MoveSpeed: 2
   phase3MoveSpeed: 0
   phase4MoveSpeed: 1
   enemyDeathDelay: 0.1
+  kickBackForce: 20
 --- !u!198 &5366098613524179518
 ParticleSystem:
   m_ObjectHideFlags: 0
