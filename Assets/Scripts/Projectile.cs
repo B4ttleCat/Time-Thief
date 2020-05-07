@@ -22,5 +22,7 @@ public class Projectile : MonoBehaviour
             _isUsed = true;
             Destroy(gameObject);
         }
+        
+        Destroy(gameObject);
     }
 }

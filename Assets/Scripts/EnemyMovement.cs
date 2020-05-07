@@ -112,9 +112,13 @@ public class EnemyMovement : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Projectile"))
         {
-            // Collisions
+            // Physics
             gameObject.GetComponent<Collider2D>().enabled = false;
-            _rb.isKinematic = true;
+            
+            /* this stops a weird knockback bug on other enemies where they glitch out
+             Enable it to stop bug, but disable collisions 
+             It won't however allow death wall collisions */
+            // _rb.isKinematic = true;
 
             // FX
             _particleSystem.Play();
@@ -122,8 +126,20 @@ public class EnemyMovement : MonoBehaviour
             
             // Death
             _isDead = true;
-            StartCoroutine(DeathDelayTimer());
-            Destroy(gameObject, enemyDeathDelay + 0.1f);
+            // StartCoroutine(DeathDelayTimer());
         }
+
+        if (other.gameObject.CompareTag("DeathWall"))
+        {
+            Debug.Log("touching walls");
+            _rb.velocity = Vector2.zero;
+            //     // Destroy(gameObject, enemyDeathDelay + 0.1f);
+        }
+        
+        // if (_isDead && _rb.IsTouchingLayers(LayerMask.GetMask("Death Walls")))
+        // {
+        //     Debug.Log("touching walls");
+        //     // Destroy(gameObject, enemyDeathDelay + 0.1f);
+        // }
     }
 }
