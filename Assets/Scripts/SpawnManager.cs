@@ -7,7 +7,6 @@ public class SpawnManager : MonoBehaviour
 {
     [Header("Setup")]
     [SerializeField] private GameObject _enemyPrefab;
-
     [SerializeField] private Tilemap _arena;
 
     [Header("Gameplay")]
@@ -24,7 +23,6 @@ public class SpawnManager : MonoBehaviour
 
         _arenaHeight = _arena.size.y;
         _arenaWidth = _arena.size.x;
-        Debug.Log(_arenaHeight + ", " + _arenaWidth);
     }
 
     void Update()
@@ -40,8 +38,7 @@ public class SpawnManager : MonoBehaviour
         float randomXPos = Random.Range((-_arenaWidth * 0.5f) + 1, (_arenaWidth * 0.5f) - 1);
         float randomYPos = Random.Range((-_arenaHeight * 0.5f) + 1, (_arenaHeight * 0.5f) - 1);
         Vector2 randomPos = new Vector2(randomXPos, randomYPos);
-
-
+        
         GameObject newEnemy = Instantiate(_enemyPrefab, randomPos, Quaternion.identity);
     }
 

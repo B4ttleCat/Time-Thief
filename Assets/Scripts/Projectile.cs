@@ -17,7 +17,6 @@ public class Projectile : MonoBehaviour
             GetComponent<Rigidbody2D>().simulated = false;
         if (other.gameObject.CompareTag("Enemy"))
         {
-            Debug.Log("used");
             transform.parent = other.transform;
             transform.position = transform.parent.localPosition;
         }
