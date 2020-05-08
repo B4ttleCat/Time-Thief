@@ -134,9 +134,7 @@ public class EnemyMovement : MonoBehaviour
             // Cancel any physics (may be unnecessary)
             _rb.velocity = Vector2.zero;
             _rb.simulated = false;
-
-            // _rb.bodyType = RigidbodyType2D.Static;
-
+            
             // _rb.isKinematic = true;
             //     // Destroy(gameObject, enemyDeathDelay + 0.1f);
         }

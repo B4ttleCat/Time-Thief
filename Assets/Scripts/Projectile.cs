@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 
 public class Projectile : MonoBehaviour
 {
@@ -13,12 +14,18 @@ public class Projectile : MonoBehaviour
         // with one shot. Doesn't work!
         if (_isUsed) return;
 
-            _isUsed = true;
-            GetComponent<Rigidbody2D>().simulated = false;
+        _isUsed = true;
+        GetComponent<Rigidbody2D>().simulated = false;
         if (other.gameObject.CompareTag("Enemy"))
         {
+            // Save the position it hit the target
+            Vector2 hitPos = transform.position;
+            
+            // Parent it to the target
             transform.parent = other.transform;
-            transform.position = transform.parent.localPosition;
+            
+            // Continue to update its position
+            transform.position = (Vector3)hitPos - transform.localPosition;
         }
     }
 }

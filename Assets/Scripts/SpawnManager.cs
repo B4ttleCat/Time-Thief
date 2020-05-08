@@ -35,8 +35,8 @@ public class SpawnManager : MonoBehaviour
 
     private void SpawnEnemy()
     {
-        float randomXPos = Random.Range((-_arenaWidth * 0.5f) + 1, (_arenaWidth * 0.5f) - 1);
-        float randomYPos = Random.Range((-_arenaHeight * 0.5f) + 1, (_arenaHeight * 0.5f) - 1);
+        float randomXPos = Random.Range((-_arenaWidth * 0.5f) + 2, (_arenaWidth * 0.5f) - 2);
+        float randomYPos = Random.Range((-_arenaHeight * 0.5f) + 2, (_arenaHeight * 0.5f) - 2);
         Vector2 randomPos = new Vector2(randomXPos, randomYPos);
         
         GameObject newEnemy = Instantiate(_enemyPrefab, randomPos, Quaternion.identity);
