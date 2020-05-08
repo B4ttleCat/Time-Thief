@@ -11,7 +11,7 @@ public class PlayerShooting : MonoBehaviour
     [SerializeField] private GameObject projectilePrefab;
     
     [Header("Gameplay")]
-    [SerializeField] private float projectileForce = 10f;
+    [SerializeField] private float projectileForce = 40f;
     [SerializeField] private float _fireRate = 1f;
 
     private Rigidbody2D _rb;
@@ -45,7 +45,7 @@ public class PlayerShooting : MonoBehaviour
         GameObject projectile = Instantiate(projectilePrefab, projectileSpawnPoint.position,quaternion.Euler(0,0, _mouseInput.Angle));
 
         // Add force to projectile
-        Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();
-        rb.AddForce(projectileSpawnPoint.right * projectileForce, ForceMode2D.Impulse);
+        Rigidbody2D projectileRb = projectile.GetComponent<Rigidbody2D>();
+        projectileRb.AddForce(projectileSpawnPoint.right * projectileForce, ForceMode2D.Impulse);
     }
 }

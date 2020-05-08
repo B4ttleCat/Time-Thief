@@ -5,24 +5,21 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    private bool _isUsed = false; 
-    private void Start()
-    {
-        Destroy(gameObject, 3f);
-    }
+    private bool _isUsed = false;
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        // Attempt to stop projectile killing two enemies
-        // Doesn't work!
+        // isUsed is an attempt to stop projectile killing two enemies
+        // with one shot. Doesn't work!
         if (_isUsed) return;
-        
+
+            _isUsed = true;
+            GetComponent<Rigidbody2D>().simulated = false;
         if (other.gameObject.CompareTag("Enemy"))
         {
-            _isUsed = true;
-            Destroy(gameObject);
+            Debug.Log("used");
+            transform.parent = other.transform;
+            transform.position = transform.parent.localPosition;
         }
-        
-        Destroy(gameObject);
     }
 }

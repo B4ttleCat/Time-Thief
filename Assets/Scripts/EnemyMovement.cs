@@ -24,6 +24,7 @@ public class EnemyMovement : MonoBehaviour
     private Vector3 _targetPos;
     private SpriteRenderer _enemySprite;
     private bool _isDead;
+    private bool _hasHitWall;
     private Vector2 _targetDirection;
 
     private void Awake()
@@ -76,7 +77,7 @@ public class EnemyMovement : MonoBehaviour
             CheckSpriteXDirection();
         }
 
-        if (_isDead)
+        else if (_isDead && _hasHitWall == false)
         {
             MoveEnemy(-kickBackForce);
         }
@@ -112,14 +113,6 @@ public class EnemyMovement : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Projectile"))
         {
-            // Physics
-            gameObject.GetComponent<Collider2D>().enabled = false;
-            
-            /* this stops a weird knockback bug on other enemies where they glitch out
-             Enable it to stop bug, but disable collisions 
-             It won't however allow death wall collisions */
-            // _rb.isKinematic = true;
-
             // FX
             _particleSystem.Play();
             _particleSystem.transform.parent = null;
@@ -128,18 +121,24 @@ public class EnemyMovement : MonoBehaviour
             _isDead = true;
             // StartCoroutine(DeathDelayTimer());
         }
+    }
 
-        if (other.gameObject.CompareTag("DeathWall"))
+    private void OnCollisionStay2D(Collision2D other)
+    {
+        
+        if (_isDead && other.gameObject.CompareTag("DeathWall"))
         {
-            Debug.Log("touching walls");
+            // Stops enemy sliding along wall
+            _hasHitWall = true;
+            
+            // Cancel any physics (may be unnecessary)
             _rb.velocity = Vector2.zero;
+            _rb.simulated = false;
+
+            // _rb.bodyType = RigidbodyType2D.Static;
+
+            // _rb.isKinematic = true;
             //     // Destroy(gameObject, enemyDeathDelay + 0.1f);
         }
-        
-        // if (_isDead && _rb.IsTouchingLayers(LayerMask.GetMask("Death Walls")))
-        // {
-        //     Debug.Log("touching walls");
-        //     // Destroy(gameObject, enemyDeathDelay + 0.1f);
-        // }
     }
 }
