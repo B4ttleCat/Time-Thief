@@ -1774,6 +1774,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemyPrefab: {fileID: 4968286176667351786, guid: 8de193926c58243fa9285751bf32e870,
     type: 3}
+  _arena: {fileID: 1419089469}
   _spawnInterval: 2
 --- !u!1 &1480834710
 GameObject:
