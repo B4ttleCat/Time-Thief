@@ -7,6 +7,18 @@ using UnityEngine.PlayerLoop;
 public class Projectile : MonoBehaviour
 {
     private bool _isUsed = false;
+    private Rigidbody2D _rb;
+    private Collider2D _col;
+    private void Awake()
+    {
+        _rb = GetComponent<Rigidbody2D>();
+        _col = GetComponent<Collider2D>();
+    }
+
+    private void Start()
+    {
+        Destroy(gameObject);
+    }
 
     private void OnCollisionEnter2D(Collision2D other)
     {
@@ -15,7 +27,9 @@ public class Projectile : MonoBehaviour
         if (_isUsed) return;
 
         _isUsed = true;
-        GetComponent<Rigidbody2D>().simulated = false;
+        _rb.simulated = false;
+        _col.enabled = false;
+
         if (other.gameObject.CompareTag("Enemy"))
         {
             // Save the position it hit the target
@@ -23,9 +37,10 @@ public class Projectile : MonoBehaviour
             
             // Parent it to the target
             transform.parent = other.transform;
-            
+
             // Continue to update its position
             transform.position = (Vector3)hitPos - transform.localPosition;
+            
         }
     }
 }

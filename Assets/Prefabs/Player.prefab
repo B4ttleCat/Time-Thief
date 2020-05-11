@@ -155,7 +155,7 @@ MonoBehaviour:
   projectileSpawnPoint: {fileID: 5624499449809028718}
   projectilePrefab: {fileID: 270236783460567484, guid: bcf64117d6802478fae985ea06b7ccb3,
     type: 3}
-  projectileForce: 30
+  projectileForce: 40
   _fireRate: 0.2
 --- !u!1 &5624499450957444267
 GameObject:

@@ -4,19 +4,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 
-public class EnemyMovement : MonoBehaviour
+public class Enemy : MonoBehaviour
 {
     [Header("Setup")]
     [SerializeField] private GameObject _target;
+    [SerializeField] public Sprite _sprite;
 
     [Header("Gameplay")]
-    [SerializeField] private float phase1MoveSpeed;
-    [SerializeField] private float phase2MoveSpeed;
-    [SerializeField] private float phase3MoveSpeed;
-    [SerializeField] private float phase4MoveSpeed;
-    
+    [SerializeField] private float moveSpeed;
     [SerializeField] private float enemyDeathDelay;
     [SerializeField] private float kickBackForce = 20f;
+    [SerializeField] private float _timeToTransition;
+    [SerializeField] private float _killMuliplier;
 
     private Rigidbody2D _rb;
     private float _currentMaxMoveSpeed;
@@ -36,7 +35,7 @@ public class EnemyMovement : MonoBehaviour
 
     private void Start()
     {
-        _currentMaxMoveSpeed = phase2MoveSpeed;
+        _currentMaxMoveSpeed = moveSpeed;
         _target = GameObject.FindWithTag("Player");
     }
 
@@ -121,13 +120,11 @@ public class EnemyMovement : MonoBehaviour
             _isDead = true;
             // StartCoroutine(DeathDelayTimer());
         }
-    }
 
-    private void OnCollisionStay2D(Collision2D other)
-    {
-        
         if (_isDead && other.gameObject.CompareTag("DeathWall"))
         {
+            Debug.Log("wall hit");
+
             // Stops enemy sliding along wall
             _hasHitWall = true;
             
@@ -135,7 +132,7 @@ public class EnemyMovement : MonoBehaviour
             _rb.velocity = Vector2.zero;
             _rb.simulated = false;
             
-            // _rb.isKinematic = true;
+            Debug.Log(_isDead + ", " + _rb.simulated);
             //     // Destroy(gameObject, enemyDeathDelay + 0.1f);
         }
     }
