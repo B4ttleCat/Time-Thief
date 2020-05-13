@@ -8,10 +8,12 @@ public class Enemy : MonoBehaviour
 {
     [Header("Setup")]
     [SerializeField] private GameObject _target;
+
     [SerializeField] public Sprite _sprite;
 
     [Header("Gameplay")]
     [SerializeField] private float moveSpeed;
+
     [SerializeField] private float enemyDeathDelay;
     [SerializeField] private float kickBackForce = 20f;
     [SerializeField] private float _timeToTransition;
@@ -21,14 +23,16 @@ public class Enemy : MonoBehaviour
     private Rigidbody2D _rb;
     private float _currentMaxMoveSpeed;
     private SpriteRenderer _enemySprite;
-    
+    private SpawnManager _spawnManager;
+    private Collider2D _col;
+
     // FX
     private ParticleSystem _particleSystem;
-    
+
     // Target
     private Vector3 _targetPos;
     private Vector2 _targetDirection;
-    
+
     // Death
     private bool _isDead;
     private bool _hasHitWall;
@@ -36,8 +40,10 @@ public class Enemy : MonoBehaviour
     private void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
+        _col = GetComponent<Collider2D>();
         _particleSystem = GetComponent<ParticleSystem>();
         _enemySprite = GetComponentInChildren<SpriteRenderer>();
+        _spawnManager = GetComponent<SpawnManager>();
     }
 
     private void Start()
@@ -87,6 +93,11 @@ public class Enemy : MonoBehaviour
         {
             MoveEnemy(-kickBackForce);
         }
+
+        if (_isDead)
+        {
+            HitWall();
+        }
     }
 
     private void MoveEnemy(float directionMultiplier)
@@ -115,6 +126,20 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    // This is an alternate way to doing it through OnCollisionEnter
+    private void HitWall()
+    {
+        if (_col.IsTouchingLayers(LayerMask.GetMask("Death Walls")))
+        {
+            // Stops enemy sliding along wall
+            _hasHitWall = true;
+
+            // Cancel any physics (may be unnecessary)
+            _rb.velocity = Vector2.zero;
+            _rb.simulated = false;
+        }
+    }
+
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.CompareTag("Projectile"))
@@ -122,26 +147,28 @@ public class Enemy : MonoBehaviour
             // FX
             _particleSystem.Play();
             _particleSystem.transform.parent = null;
-            
+
             // Death
             _isDead = true;
             // StartCoroutine(DeathDelayTimer());
         }
 
-        if (_isDead && other.gameObject.CompareTag("DeathWall"))
+        /*if (_isDead && other.gameObject.CompareTag("DeathWall"))
         {
-            Debug.Log("wall hit");
-
             // Stops enemy sliding along wall
             _hasHitWall = true;
-            
+
             // Cancel any physics (may be unnecessary)
             _rb.velocity = Vector2.zero;
             _rb.simulated = false;
-            
-            Debug.Log(_isDead + ", " + _rb.simulated);
+
+            /// This line was used before enemies impacted with walls.
+            /// Still might be useful if performance gets choppy further into game 
             //     // Destroy(gameObject, enemyDeathDelay + 0.1f);
+       
+            Destroy(gameObject, 15f);
         }
+             */
     }
 }
 

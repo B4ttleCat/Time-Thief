@@ -17,7 +17,14 @@ public class SpawnManager : MonoBehaviour
 
     private float _spawnTimer;
     private float _nextSpawn;
-    private int _arenaWidth, _arenaHeight;
+    private Vector2 _arenaSize;
+
+    public Vector2 ArenaSize
+    {
+        get { return _arenaSize; }
+        private set { _arenaSize = value; }
+    }
+
     private GameObject _enemyParent;
 
     void Start()
@@ -25,8 +32,7 @@ public class SpawnManager : MonoBehaviour
         _spawnTimer = 0f;
         _nextSpawn = 0f;
 
-        _arenaHeight = _arena.size.y;
-        _arenaWidth = _arena.size.x;
+        _arenaSize =  new Vector2(_arena.size.x, _arena.size.y);;
 
         if (_enemyParent == null)
         {
@@ -51,8 +57,8 @@ public class SpawnManager : MonoBehaviour
 
     private Vector2 GetRandomSpawnPos()
     {
-        float randomXPos = Random.Range((-_arenaWidth * 0.5f) + 2, (_arenaWidth * 0.5f) - 2);
-        float randomYPos = Random.Range((-_arenaHeight * 0.5f) + 2, (_arenaHeight * 0.5f) - 2);
+        float randomXPos = Random.Range((-_arenaSize.x * 0.5f) + 2, (_arenaSize.x * 0.5f) - 2);
+        float randomYPos = Random.Range((-_arenaSize.y * 0.5f) + 2, (_arenaSize.y * 0.5f) - 2);
         Vector2 randomPos = new Vector2(randomXPos, randomYPos);
         return randomPos;
     }
