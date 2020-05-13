@@ -8,22 +8,16 @@ public class Enemy : MonoBehaviour
 {
     [Header("Setup")]
     [SerializeField] private GameObject _target;
-
-    [SerializeField] public Sprite _sprite;
-
+    
     [Header("Gameplay")]
-    [SerializeField] private float moveSpeed;
+    public float maxMoveSpeed;
 
     [SerializeField] private float enemyDeathDelay;
     [SerializeField] private float kickBackForce = 20f;
-    [SerializeField] private float _timeToTransition;
-    [SerializeField] private float _killMuliplier;
 
     // Enemy
     private Rigidbody2D _rb;
-    private float _currentMaxMoveSpeed;
     private SpriteRenderer _enemySprite;
-    private SpawnManager _spawnManager;
     private Collider2D _col;
 
     // FX
@@ -43,12 +37,10 @@ public class Enemy : MonoBehaviour
         _col = GetComponent<Collider2D>();
         _particleSystem = GetComponent<ParticleSystem>();
         _enemySprite = GetComponentInChildren<SpriteRenderer>();
-        _spawnManager = GetComponent<SpawnManager>();
     }
 
     private void Start()
     {
-        _currentMaxMoveSpeed = moveSpeed;
         _target = GameObject.FindWithTag("Player");
     }
 
@@ -89,14 +81,11 @@ public class Enemy : MonoBehaviour
             CheckSpriteXDirection();
         }
 
+        // todo fix for phase zero where enemy speed is zero
         else if (_isDead && _hasHitWall == false)
         {
             MoveEnemy(-kickBackForce);
-        }
-
-        if (_isDead)
-        {
-            HitWall();
+            DeathWallCollisionCheck();
         }
     }
 
@@ -105,7 +94,7 @@ public class Enemy : MonoBehaviour
         _targetPos = _target.transform.position;
 
         transform.position = Vector2.MoveTowards(transform.position, _targetPos,
-            _currentMaxMoveSpeed * directionMultiplier * Time.deltaTime);
+            maxMoveSpeed * directionMultiplier * Time.deltaTime);
     }
 
     private IEnumerator DeathDelayTimer()
@@ -127,7 +116,7 @@ public class Enemy : MonoBehaviour
     }
 
     // This is an alternate way to doing it through OnCollisionEnter
-    private void HitWall()
+    private void DeathWallCollisionCheck()
     {
         if (_col.IsTouchingLayers(LayerMask.GetMask("Death Walls")))
         {
