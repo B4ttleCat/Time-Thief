@@ -43,10 +43,10 @@ public class EvolutionManager : MonoBehaviour
         _timer += Time.deltaTime;
 
         // todo rig the 1f to the timer on each prefab 
-        if (_hasReachedFinalEvolution == false && _timer >= 1f)
+        if (_timer >= 1f)
         {
-            UpdateCurrentPhasePrefab(phasePrefabs[_nextPhaseIndex]);
             _timer = 0f;
+            _currentPhasePrefab = UpdateCurrentPhasePrefab(phasePrefabs[_nextPhaseIndex]);
         }
     }
 }

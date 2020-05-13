@@ -17,14 +17,21 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float _timeToTransition;
     [SerializeField] private float _killMuliplier;
 
+    // Enemy
     private Rigidbody2D _rb;
     private float _currentMaxMoveSpeed;
-    private ParticleSystem _particleSystem;
-    private Vector3 _targetPos;
     private SpriteRenderer _enemySprite;
+    
+    // FX
+    private ParticleSystem _particleSystem;
+    
+    // Target
+    private Vector3 _targetPos;
+    private Vector2 _targetDirection;
+    
+    // Death
     private bool _isDead;
     private bool _hasHitWall;
-    private Vector2 _targetDirection;
 
     private void Awake()
     {
@@ -137,3 +144,6 @@ public class Enemy : MonoBehaviour
         }
     }
 }
+
+/// Idea: On isdead make collider radius large. When collider hits wall
+/// make radius zero and slow speed down. Then turn physics off as per current code.

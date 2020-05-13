@@ -92,10 +92,10 @@ GameObject:
   - component: {fileID: 6445162947682492823}
   - component: {fileID: 4868790480706007895}
   - component: {fileID: 2838034583471974216}
-  - component: {fileID: 173299313}
   - component: {fileID: 5366098613524179518}
-  - component: {fileID: -7136440877029468655}
   - component: {fileID: 3658561417327600239}
+  - component: {fileID: 173299313}
+  - component: {fileID: -7136440877029468655}
   - component: {fileID: 8222766333776913231}
   m_Layer: 12
   m_Name: Enemy
@@ -165,26 +165,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   serializedVersion: 2
   m_Size: {x: 0.4588622, y: 0.87550455}
-  m_EdgeRadius: 0
---- !u!114 &173299313
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4968286176667351786}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad7ea3d68cc9b40f58cbf369033c464a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _target: {fileID: 5624499450862868864, guid: b4c712d70ace74a96ac5bc22734f3697, type: 3}
-  _sprite: {fileID: 21300000, guid: a0f57b216d45446c7b22275614f69e96, type: 3}
-  moveSpeed: 2.5
-  enemyDeathDelay: 0.1
-  kickBackForce: 30
-  _timeToTransition: 0
-  _killMuliplier: 0
+  m_EdgeRadius: 0.54
 --- !u!198 &5366098613524179518
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -4843,6 +4824,73 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!114 &3658561417327600239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4968286176667351786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd438dd108a0f284aa931a2da434f1d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ImpulseDefinition:
+    m_ImpulseChannel: 1
+    m_RawSignal: {fileID: 11400000, guid: 5782b4e67f5664c31b6e13d5c3bc8885, type: 2}
+    m_AmplitudeGain: 0.2
+    m_FrequencyGain: 1
+    m_RepeatMode: 0
+    m_Randomize: 1
+    m_TimeEnvelope:
+      m_AttackShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      m_DecayShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      m_AttackTime: 0
+      m_SustainTime: 0.2
+      m_DecayTime: 0.7
+      m_ScaleWithImpact: 1
+      m_HoldForever: 0
+    m_ImpactRadius: 100
+    m_DirectionMode: 0
+    m_DissipationMode: 2
+    m_DissipationDistance: 1000
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 8192
+  m_IgnoreTag: 
+  m_UseImpactDirection: 1
+  m_ScaleImpactWithMass: 0
+  m_ScaleImpactWithSpeed: 1
+--- !u!114 &173299313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4968286176667351786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad7ea3d68cc9b40f58cbf369033c464a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _target: {fileID: 5624499450862868864, guid: b4c712d70ace74a96ac5bc22734f3697, type: 3}
+  _sprite: {fileID: 21300000, guid: a0f57b216d45446c7b22275614f69e96, type: 3}
+  moveSpeed: 2.5
+  enemyDeathDelay: 0.1
+  kickBackForce: 30
+  _timeToTransition: 0
+  _killMuliplier: 0
 --- !u!199 &-7136440877029468655
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -4907,54 +4955,6 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
---- !u!114 &3658561417327600239
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4968286176667351786}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd438dd108a0f284aa931a2da434f1d3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ImpulseDefinition:
-    m_ImpulseChannel: 1
-    m_RawSignal: {fileID: 11400000, guid: 5782b4e67f5664c31b6e13d5c3bc8885, type: 2}
-    m_AmplitudeGain: 0.2
-    m_FrequencyGain: 1
-    m_RepeatMode: 0
-    m_Randomize: 1
-    m_TimeEnvelope:
-      m_AttackShape:
-        serializedVersion: 2
-        m_Curve: []
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-      m_DecayShape:
-        serializedVersion: 2
-        m_Curve: []
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-      m_AttackTime: 0
-      m_SustainTime: 0.2
-      m_DecayTime: 0.7
-      m_ScaleWithImpact: 1
-      m_HoldForever: 0
-    m_ImpactRadius: 100
-    m_DirectionMode: 0
-    m_DissipationMode: 2
-    m_DissipationDistance: 1000
-  m_LayerMask:
-    serializedVersion: 2
-    m_Bits: 8192
-  m_IgnoreTag: 
-  m_UseImpactDirection: 1
-  m_ScaleImpactWithMass: 0
-  m_ScaleImpactWithSpeed: 1
 --- !u!114 &8222766333776913231
 MonoBehaviour:
   m_ObjectHideFlags: 0
