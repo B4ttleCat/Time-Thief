@@ -4964,23 +4964,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3631e6adc5324fd6aeba4c1fe42dcaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  phaseIndex: 0
-  maxPhases: 5
-  colours:
-  - {r: 0.9917783, g: 1, b: 0.8443396, a: 1}
-  - {r: 1, g: 0.660842, b: 0.2216981, a: 1}
-  - {r: 1, g: 0.2216981, b: 0.2216981, a: 1}
-  - {r: 0.44588825, g: 0.54006004, b: 0.5660378, a: 1}
-  - {r: 0.44961676, g: 0.2799039, b: 0.6981132, a: 1}
-  speeds:
-  - 0
-  - 7
-  - 4
-  - 0
-  - 2
-  transitionTimes:
-  - 1
-  - 3
-  - 7
-  - 4
-  - 99
+  _phases:
+  - Name: Spawnling
+    Sprite: {fileID: 0}
+    Colour: {r: 1, g: 1, b: 1, a: 1}
+    MoveSpeed: 0
+    LifeTime: 1
+    Collider: {fileID: 0}
+    ScoreMultiplier: 5
+  - Name: Infant
+    Sprite: {fileID: 0}
+    Colour: {r: 1, g: 0.6871677, b: 0.1745283, a: 1}
+    MoveSpeed: 7
+    LifeTime: 1.5
+    Collider: {fileID: 0}
+    ScoreMultiplier: 3
+  - Name: Adult
+    Sprite: {fileID: 0}
+    Colour: {r: 1, g: 0.17647058, b: 0.44932023, a: 1}
+    MoveSpeed: 4
+    LifeTime: 7
+    Collider: {fileID: 0}
+    ScoreMultiplier: 1.5
+  - Name: Deceased
+    Sprite: {fileID: 0}
+    Colour: {r: 0.56198823, g: 0.6671458, b: 0.6886792, a: 1}
+    MoveSpeed: 0
+    LifeTime: 4
+    Collider: {fileID: 0}
+    ScoreMultiplier: 1
+  - Name: Undead
+    Sprite: {fileID: 0}
+    Colour: {r: 0.40926766, g: 0.2733179, b: 0.6981132, a: 1}
+    MoveSpeed: 0.5
+    LifeTime: 99
+    Collider: {fileID: 0}
+    ScoreMultiplier: -1

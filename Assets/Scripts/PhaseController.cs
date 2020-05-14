@@ -3,29 +3,35 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+[Serializable]
+struct Phases
+{
+    public String Name;
+    public Sprite Sprite;
+    public Color Colour;
+    public float MoveSpeed;
+    public float LifeTime;
+    public Collider2D Collider;
+    public float ScoreMultiplier;
+}
+
 public class PhaseController : MonoBehaviour
 {
-    [Header("Setup")]
-    [SerializeField] private int maxPhases;
-    [SerializeField] private Color[] colours;
-    
-    [Header("Gameplay")]
-    [SerializeField] private float[] speeds;
-    [SerializeField] private float[] transitionTimes;
-    
+    [SerializeField] private Phases[] _phases;
+
     // Component references
     private SpriteRenderer _sprite;
     private Enemy _enemy;
-    
+
     // Phase tracking
     private int _currentPhase;
     private int _nextPhase;
     private bool _hasReachedFinalEvolution;
-    
+
     // Timers
     private float _timer;
     private float _nextTransitionTime;
-    
 
     private void Awake()
     {
@@ -35,31 +41,24 @@ public class PhaseController : MonoBehaviour
 
     void Start()
     {
-        // nextPhase  = 0 ... perfect
         UpdatePhase(_nextPhase);
     }
 
-    private int UpdatePhase(int nextPhase)
+    private int UpdatePhase(int newPhase)
     {
-        // Set sprite colour
-        _sprite.color = colours[nextPhase];
-        
-        // Set move speed
-        _enemy.maxMoveSpeed = speeds[nextPhase];
-        
-        // Update next transition time
-        _nextTransitionTime = transitionTimes[nextPhase];
-        
-        // Update phase index
+        _sprite.color = _phases[newPhase].Colour;
+        _enemy.maxMoveSpeed = _phases[newPhase].MoveSpeed;
+        _nextTransitionTime = _phases[newPhase].LifeTime;
+
         _nextPhase++;
 
-        if (_nextPhase >= maxPhases)
+        if (_nextPhase >= _phases.Length)
         {
             _hasReachedFinalEvolution = true;
             return _currentPhase;
         }
 
-        return nextPhase;
+        return newPhase;
     }
 
     void Update()
