@@ -25,7 +25,7 @@ public class PhaseController : MonoBehaviour
     private Enemy _enemy;
 
     // Phase tracking
-    private int _currentPhase;
+    public int CurrentPhase{ get; private set; }
     private int _nextPhase;
     private bool _hasReachedFinalEvolution;
 
@@ -55,7 +55,7 @@ public class PhaseController : MonoBehaviour
         if (_nextPhase >= _phases.Length)
         {
             _hasReachedFinalEvolution = true;
-            return _currentPhase;
+            return CurrentPhase;
         }
 
         return newPhase;
@@ -70,7 +70,12 @@ public class PhaseController : MonoBehaviour
         if (_timer >= _nextTransitionTime)
         {
             _timer = 0f;
-            _currentPhase = UpdatePhase(_nextPhase);
+            CurrentPhase = UpdatePhase(_nextPhase);
         }
+    }
+
+    public float GetCurrentPhaseScoreMultiplier()
+    {
+        return _phases[CurrentPhase].ScoreMultiplier;
     }
 }
