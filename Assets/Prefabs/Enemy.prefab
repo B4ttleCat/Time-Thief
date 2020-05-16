@@ -4999,4 +4999,5 @@ MonoBehaviour:
     MoveSpeed: 0.5
     LifeTime: 99
     Collider: {fileID: 0}
-    ScoreMultiplier: -1
+    ScoreMultiplier: -6
+  _nextPhase: 4

@@ -81,7 +81,6 @@ public class Enemy : MonoBehaviour
             CheckSpriteXDirection();
         }
 
-        // todo fix for phase zero where enemy speed is zero
         else if (_isDead && _hasHitWall == false)
         {
             MoveEnemy(-kickBackForce);
@@ -89,10 +88,13 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    // todo check if player is in deceased phase and turn to static so it can't be bumped
+    // todo check if enemy is in deceased phase and turn to static so it can't be bumped
     private void MoveEnemy(float directionMultiplier)
     {
         _targetPos = _target.transform.position;
+
+        // Allows two phases that don't move to have kickback
+        if (maxMoveSpeed < 1 && _isDead) maxMoveSpeed = 1;
 
         transform.position = Vector2.MoveTowards(transform.position, _targetPos,
             maxMoveSpeed * directionMultiplier * Time.deltaTime);
@@ -134,16 +136,19 @@ public class Enemy : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Projectile"))
         {
+            PhaseController phaseController = GetComponent<PhaseController>();
+            
             // FX
             _particleSystem.Play();
             _particleSystem.transform.parent = null;
+            
+            // Add Time to clock
+            FindObjectOfType<PlayerHealth>().AddTime(gameObject, phaseController.GetCurrentPhaseScoreMultiplier());
 
             // Death
             _isDead = true;
+            phaseController.enabled = false;
             // StartCoroutine(DeathDelayTimer());
-            
-            // Add Time to clock
-            FindObjectOfType<PlayerHealth>().AddTime(gameObject);
         }
 
         /*if (_isDead && other.gameObject.CompareTag("DeathWall"))

@@ -25,8 +25,8 @@ public class PhaseController : MonoBehaviour
     private Enemy _enemy;
 
     // Phase tracking
+    public int _nextPhase;
     public int CurrentPhase{ get; private set; }
-    private int _nextPhase;
     private bool _hasReachedFinalEvolution;
 
     // Timers
@@ -44,6 +44,19 @@ public class PhaseController : MonoBehaviour
         UpdatePhase(_nextPhase);
     }
 
+    void Update()
+    {
+        if (_hasReachedFinalEvolution) return;
+
+        _timer += Time.deltaTime;
+
+        if (_timer >= _nextTransitionTime)
+        {
+            _timer = 0f;
+            CurrentPhase = UpdatePhase(_nextPhase);
+        }
+    }
+
     private int UpdatePhase(int newPhase)
     {
         _sprite.color = _phases[newPhase].Colour;
@@ -59,19 +72,6 @@ public class PhaseController : MonoBehaviour
         }
 
         return newPhase;
-    }
-
-    void Update()
-    {
-        if (_hasReachedFinalEvolution) return;
-
-        _timer += Time.deltaTime;
-
-        if (_timer >= _nextTransitionTime)
-        {
-            _timer = 0f;
-            CurrentPhase = UpdatePhase(_nextPhase);
-        }
     }
 
     public float GetCurrentPhaseScoreMultiplier()
