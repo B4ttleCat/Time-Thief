@@ -4867,7 +4867,7 @@ MonoBehaviour:
     m_DissipationDistance: 1000
   m_LayerMask:
     serializedVersion: 2
-    m_Bits: 8192
+    m_Bits: 9216
   m_IgnoreTag: 
   m_UseImpactDirection: 1
   m_ScaleImpactWithMass: 0

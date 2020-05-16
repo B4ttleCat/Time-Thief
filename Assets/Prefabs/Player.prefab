@@ -172,6 +172,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _timeBar: {fileID: 4814126658721510727, guid: 81312f59b0e2f43be9c972ae96144327,
     type: 3}
+  maxTime: 30
 --- !u!1 &5624499450957444267
 GameObject:
   m_ObjectHideFlags: 0

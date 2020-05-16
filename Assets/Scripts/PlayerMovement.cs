@@ -32,7 +32,6 @@ public class PlayerMovement : MonoBehaviour
     {
         _movement.x = Input.GetAxisRaw("Horizontal");
         _movement.y = Input.GetAxisRaw("Vertical");
-
     }
 
     private void CheckSpriteXDirection()

@@ -18,6 +18,7 @@ public class PlayerHealth : MonoBehaviour
 
     void Update()
     {
+        
         UpdateTimer();
 
         if (_timer <= 0f)
@@ -35,7 +36,7 @@ public class PlayerHealth : MonoBehaviour
 
     private void UpdateTimer(float time)
     {
-        _timer -= time;
+        _timer += time;
         _timeBar.SetTime(_timer);
     }
 
@@ -57,6 +58,18 @@ public class PlayerHealth : MonoBehaviour
         float timeToSubtract = phaseController.GetCurrentPhaseScoreMultiplier();
 
         // subtract it from the timer
-        UpdateTimer(timeToSubtract);
+        UpdateTimer(-timeToSubtract);
+    }
+
+    public void AddTime(GameObject enemy)
+    {        
+        // Get current phase of enemy
+        PhaseController phaseController = enemy.GetComponent<PhaseController>();
+        
+        // Get timeMultiplier value off current Phase of enemy
+        float timeToAdd = phaseController.GetCurrentPhaseScoreMultiplier();
+
+        // Add it to the timer
+        UpdateTimer(timeToAdd);
     }
 }

@@ -42,6 +42,7 @@ public class Projectile : MonoBehaviour
             // Continue to update its position
             transform.position = (Vector3)hitPos - transform.localPosition;
             
+            
         }
     }
 }

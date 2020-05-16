@@ -89,6 +89,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    // todo check if player is in deceased phase and turn to static so it can't be bumped
     private void MoveEnemy(float directionMultiplier)
     {
         _targetPos = _target.transform.position;
@@ -140,6 +141,9 @@ public class Enemy : MonoBehaviour
             // Death
             _isDead = true;
             // StartCoroutine(DeathDelayTimer());
+            
+            // Add Time to clock
+            FindObjectOfType<PlayerHealth>().AddTime(gameObject);
         }
 
         /*if (_isDead && other.gameObject.CompareTag("DeathWall"))
