@@ -9,7 +9,7 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private int maxTime = 30;
     [SerializeField] private float InvincibilityTime = 0.66f;
     private float _timer;
-    private bool _canTakeDamage;
+    public bool _canTakeDamage;
 
     void Start()
     {
@@ -97,9 +97,7 @@ public class PlayerHealth : MonoBehaviour
     // Use this one when enemy damages player or player kills enemy
     private void UpdateTimer(float time)
     {
-        Debug.Log(_timer + ", " + time);
         _timer += time;
-        Debug.Log(_timer);
         if (_timer > maxTime) _timer = maxTime;
         _timeBar.SetTime(_timer);
     }

@@ -88,6 +88,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    // todo IMPORTANT Stop enemy pushing player through wall 
     // todo check if enemy is in deceased phase and turn to static so it can't be bumped
     private void MoveEnemy(float directionMultiplier)
     {

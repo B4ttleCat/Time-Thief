@@ -3,7 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
+/// <summary>
+/// This Struct gives each phase it's own field in the inspector
+/// so I can assign individual properties for each phase.
+/// I generate the phases by creating an array of Structs
+/// </summary>
 [Serializable]
 struct Phases
 {
@@ -26,7 +30,7 @@ public class PhaseController : MonoBehaviour
 
     // Phase tracking
     public int _nextPhase;
-    public int CurrentPhase{ get; private set; }
+    public int CurrentPhase { get; private set; }
     private bool _hasReachedFinalEvolution;
 
     // Timers
@@ -46,36 +50,42 @@ public class PhaseController : MonoBehaviour
 
     void Update()
     {
+        // Stop the Enemy changing phase anymore if it's at the last one
         if (_hasReachedFinalEvolution) return;
 
+        // Update phase timer
         _timer += Time.deltaTime;
 
+        // Change phase if timer exceeded transition time
         if (_timer >= _nextTransitionTime)
         {
             _timer = 0f;
+
+            if (CurrentPhase >= _phases.Length)
+            {
+                _hasReachedFinalEvolution = true;
+            }
+
             CurrentPhase = UpdatePhase(_nextPhase);
         }
     }
-
+    
     private int UpdatePhase(int newPhase)
     {
+        // Update attributes
         _sprite.color = _phases[newPhase].Colour;
         _enemy.maxMoveSpeed = _phases[newPhase].MoveSpeed;
         _nextTransitionTime = _phases[newPhase].LifeTime;
 
+        // Increment counter for next phase
         _nextPhase++;
-
-        if (_nextPhase >= _phases.Length)
-        {
-            _hasReachedFinalEvolution = true;
-            return CurrentPhase;
-        }
 
         return newPhase;
     }
 
     public float GetCurrentPhaseScoreMultiplier()
     {
+        Debug.Log("Current phase is: " + CurrentPhase);
         return _phases[CurrentPhase].ScoreMultiplier;
     }
 }

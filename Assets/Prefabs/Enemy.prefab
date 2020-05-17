@@ -4971,7 +4971,7 @@ MonoBehaviour:
     MoveSpeed: 0
     LifeTime: 1
     Collider: {fileID: 0}
-    ScoreMultiplier: 5
+    ScoreMultiplier: 6
   - Name: Infant
     Sprite: {fileID: 0}
     Colour: {r: 1, g: 0.6871677, b: 0.1745283, a: 1}
@@ -4996,8 +4996,8 @@ MonoBehaviour:
   - Name: Undead
     Sprite: {fileID: 0}
     Colour: {r: 0.40926766, g: 0.2733179, b: 0.6981132, a: 1}
-    MoveSpeed: 0.5
+    MoveSpeed: 1
     LifeTime: 99
     Collider: {fileID: 0}
     ScoreMultiplier: -6
-  _nextPhase: 4
+  _nextPhase: 0
