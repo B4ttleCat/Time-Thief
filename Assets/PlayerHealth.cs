@@ -8,6 +8,8 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private TimeBar _timeBar;
     [SerializeField] private int maxTime = 30;
     [SerializeField] private float InvincibilityTime = 0.66f;
+    [SerializeField] private Color hurtColour;
+    
     private float _timer;
     private bool _canTakeDamage;  // Turn this to public for debugging with invincibility
 
@@ -40,7 +42,7 @@ public class PlayerHealth : MonoBehaviour
         Color startColour = sprite.color;
 
         // Change colour to show damage
-        sprite.color = Color.red;
+        sprite.color = hurtColour;
 
         // Keep it on for a bit...
         yield return new WaitForSeconds(InvincibilityTime);
@@ -64,13 +66,12 @@ public class PlayerHealth : MonoBehaviour
     // When Player is touches Enemy
     private void SubtractTime(Collision2D other)
     {
-        // Get current phase of enemy
-        int currentPhase = other.gameObject.GetComponent<PhaseController>().CurrentPhase;
-
         // Get timeMultiplier value off current Phase of enemy
         PhaseController phaseController = other.gameObject.GetComponent<PhaseController>();
         float timeToSubtract = phaseController.GetCurrentPhaseScoreMultiplier();
 
+        Debug.Log(timeToSubtract);
+        
         // subtract it from the timer
         UpdateTimer(-timeToSubtract);
     }
@@ -79,10 +80,6 @@ public class PlayerHealth : MonoBehaviour
     // When Player shoots Enemy
     public void AddTime(GameObject enemy, float timeAdjustment)
     {
-        Debug.Log(timeAdjustment);
-        // Get current phase of enemy
-        PhaseController phaseController = enemy.GetComponent<PhaseController>();
-        
         // Add it to the timer
         UpdateTimer(timeAdjustment);
     }

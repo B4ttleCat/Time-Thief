@@ -92,7 +92,6 @@ public class PhaseController : MonoBehaviour
 
     public float GetCurrentPhaseScoreMultiplier()
     {
-        Debug.Log("Current phase is: " + CurrentPhase);
-        return _phases[CurrentPhase].TimeToAdd;
+        return _phases[CurrentPhase].DamageDealt;
     }
 }

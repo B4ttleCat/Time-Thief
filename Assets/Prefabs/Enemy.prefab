@@ -4971,7 +4971,7 @@ MonoBehaviour:
     MoveSpeed: 0
     LifeTime: 1
     Collider: {fileID: 0}
-    TimeToAdd: 5
+    TimeToAdd: 6
     DamageMultiplier: 0
   - Name: Infant
     Sprite: {fileID: 0}
@@ -4988,7 +4988,7 @@ MonoBehaviour:
     LifeTime: 7
     Collider: {fileID: 0}
     TimeToAdd: 2
-    DamageMultiplier: 3
+    DamageMultiplier: 4
   - Name: Deceased
     Sprite: {fileID: 0}
     Colour: {r: 0.56198823, g: 0.6671458, b: 0.6886792, a: 1}
