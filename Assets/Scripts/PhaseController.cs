@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 /// <summary>
@@ -17,7 +18,13 @@ struct Phases
     public float MoveSpeed;
     public float LifeTime;
     public Collider2D Collider;
-    public float ScoreMultiplier;
+    public float TimeToAdd;
+    public float DamageMultiplier;
+
+    public float DamageDealt
+    {
+        get { return TimeToAdd * DamageMultiplier; }
+    }
 }
 
 public class PhaseController : MonoBehaviour
@@ -69,7 +76,7 @@ public class PhaseController : MonoBehaviour
             CurrentPhase = UpdatePhase(_nextPhase);
         }
     }
-    
+
     private int UpdatePhase(int newPhase)
     {
         // Update attributes
@@ -86,6 +93,6 @@ public class PhaseController : MonoBehaviour
     public float GetCurrentPhaseScoreMultiplier()
     {
         Debug.Log("Current phase is: " + CurrentPhase);
-        return _phases[CurrentPhase].ScoreMultiplier;
+        return _phases[CurrentPhase].TimeToAdd;
     }
 }

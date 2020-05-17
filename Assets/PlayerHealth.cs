@@ -9,7 +9,7 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private int maxTime = 30;
     [SerializeField] private float InvincibilityTime = 0.66f;
     private float _timer;
-    public bool _canTakeDamage;
+    private bool _canTakeDamage;  // Turn this to public for debugging with invincibility
 
     void Start()
     {

@@ -4971,33 +4971,38 @@ MonoBehaviour:
     MoveSpeed: 0
     LifeTime: 1
     Collider: {fileID: 0}
-    ScoreMultiplier: 6
+    TimeToAdd: 5
+    DamageMultiplier: 0
   - Name: Infant
     Sprite: {fileID: 0}
     Colour: {r: 1, g: 0.6871677, b: 0.1745283, a: 1}
     MoveSpeed: 7
     LifeTime: 1.5
     Collider: {fileID: 0}
-    ScoreMultiplier: 3
+    TimeToAdd: 3
+    DamageMultiplier: 1.2
   - Name: Adult
     Sprite: {fileID: 0}
     Colour: {r: 1, g: 0.17647058, b: 0.44932023, a: 1}
     MoveSpeed: 4
     LifeTime: 7
     Collider: {fileID: 0}
-    ScoreMultiplier: 1.5
+    TimeToAdd: 2
+    DamageMultiplier: 3
   - Name: Deceased
     Sprite: {fileID: 0}
     Colour: {r: 0.56198823, g: 0.6671458, b: 0.6886792, a: 1}
     MoveSpeed: 0
     LifeTime: 4
     Collider: {fileID: 0}
-    ScoreMultiplier: 1
+    TimeToAdd: 1
+    DamageMultiplier: 0
   - Name: Undead
     Sprite: {fileID: 0}
     Colour: {r: 0.40926766, g: 0.2733179, b: 0.6981132, a: 1}
     MoveSpeed: 1
     LifeTime: 99
     Collider: {fileID: 0}
-    ScoreMultiplier: -6
+    TimeToAdd: -5
+    DamageMultiplier: 2
   _nextPhase: 0
