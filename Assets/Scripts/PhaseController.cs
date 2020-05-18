@@ -14,6 +14,7 @@ struct Phases
 {
     public String Name;
     public Sprite Sprite;
+    public Sprite DeathSprite;
     public Color Colour;
     public float MoveSpeed;
     public float LifeTime;
@@ -80,9 +81,10 @@ public class PhaseController : MonoBehaviour
     private int UpdatePhase(int newPhase)
     {
         // Update attributes
-        _sprite.color = _phases[newPhase].Colour;
+        // _sprite.color = _phases[newPhase].Colour;
         _enemy.maxMoveSpeed = _phases[newPhase].MoveSpeed;
         _nextTransitionTime = _phases[newPhase].LifeTime;
+        _sprite.sprite = _phases[newPhase].Sprite;
 
         // Increment counter for next phase
         _nextPhase++;
@@ -93,5 +95,10 @@ public class PhaseController : MonoBehaviour
     public float GetCurrentPhaseScoreMultiplier()
     {
         return _phases[CurrentPhase].DamageDealt;
+    }
+    
+    public void UseDeathSprite ()
+    {
+        _sprite.sprite = _phases[CurrentPhase].DeathSprite;
     }
 }

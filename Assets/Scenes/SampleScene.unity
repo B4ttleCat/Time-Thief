@@ -5789,7 +5789,7 @@ MonoBehaviour:
   _arena: {fileID: 1419089469}
   _enemyPrefab: {fileID: 4968286176667351786, guid: 8de193926c58243fa9285751bf32e870,
     type: 3}
-  _spawnInterval: 0.6
+  _spawnInterval: 0.4
 --- !u!1 &1480834710
 GameObject:
   m_ObjectHideFlags: 0
@@ -10417,6 +10417,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b62e385a1fcd64da3b855f67c9db1c21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1580397103 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3123835690061021084, guid: 14b08fa9c91e54b64aecbc2f95fc8302,
+    type: 3}
+  m_PrefabInstance: {fileID: 3123835690487613408}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1580397108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1580397103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a160d838ff8b4b4693ac20007e008c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AssetsPPU: 16
+  m_RefResolutionX: 320
+  m_RefResolutionY: 180
+  m_UpscaleRT: 0
+  m_PixelSnapping: 1
+  m_CropFrameX: 0
+  m_CropFrameY: 0
+  m_StretchFill: 0
 --- !u!1001 &3123835690487613408
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10511,7 +10537,7 @@ PrefabInstance:
     - target: {fileID: 3123835690061021024, guid: 14b08fa9c91e54b64aecbc2f95fc8302,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.67618155
+      value: 0.67705417
       objectReference: {fileID: 0}
     - target: {fileID: 3123835690061021024, guid: 14b08fa9c91e54b64aecbc2f95fc8302,
         type: 3}
@@ -10561,7 +10587,7 @@ PrefabInstance:
     - target: {fileID: 3123835690187224223, guid: 14b08fa9c91e54b64aecbc2f95fc8302,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.67618155
+      value: 0.67705417
       objectReference: {fileID: 0}
     - target: {fileID: 3123835690187224223, guid: 14b08fa9c91e54b64aecbc2f95fc8302,
         type: 3}

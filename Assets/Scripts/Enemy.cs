@@ -89,7 +89,9 @@ public class Enemy : MonoBehaviour
     }
 
     // todo IMPORTANT Stop enemy pushing player through wall 
-    // todo check if enemy is in deceased phase and turn to static so it can't be bumped
+    // todo if player is pushed through wall make them spawn somewhere back in the arena
+    // after checking the spawn position for an enemy
+    // todo check if enemy is in deceased or spawnling phase and turn to static so it can't be bumped
     private void MoveEnemy(float directionMultiplier)
     {
         _targetPos = _target.transform.position;
@@ -139,6 +141,9 @@ public class Enemy : MonoBehaviour
         {
             PhaseController phaseController = GetComponent<PhaseController>();
             
+            // Sprite swap
+            phaseController.UseDeathSprite();
+
             // FX
             _particleSystem.Play();
             _particleSystem.transform.parent = null;
