@@ -28,6 +28,7 @@ public class Projectile : MonoBehaviour
         if (_isUsed) return;
 
         _isUsed = true;
+        _rb.velocity = Vector2.zero;
         _rb.simulated = false;
         _col.enabled = false;
 

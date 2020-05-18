@@ -69,15 +69,11 @@ public class PlayerHealth : MonoBehaviour
         // Get timeMultiplier value off current Phase of enemy
         PhaseController phaseController = other.gameObject.GetComponent<PhaseController>();
         float timeToSubtract = phaseController.GetCurrentPhaseScoreMultiplier();
-
-        Debug.Log(timeToSubtract);
         
         // subtract it from the timer
         UpdateTimer(-timeToSubtract);
     }
 
-    // todo check/fix for when enemy phase is a penalty score (deceased)
-    // When Player shoots Enemy
     public void AddTime(GameObject enemy, float timeAdjustment)
     {
         // Add it to the timer

@@ -70,7 +70,8 @@ SpriteRenderer:
   m_SortingLayerID: -1177907143
   m_SortingLayer: -1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: a0f57b216d45446c7b22275614f69e96, type: 3}
+  m_Sprite: {fileID: -8421458170528590454, guid: d48b7f54f66324224ae192c606014a87,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -81,6 +82,63 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &994456179941329616
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7826251674069745551}
+  - component: {fileID: 8088557963663484321}
+  m_Layer: 0
+  m_Name: Collider Spawnling
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &7826251674069745551
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 994456179941329616}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6445162947682492823}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &8088557963663484321
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 994456179941329616}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.12548232}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.74903536}
+  m_EdgeRadius: 0
 --- !u!1 &4968286176667351786
 GameObject:
   m_ObjectHideFlags: 0
@@ -116,6 +174,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5277942176541408155}
+  - {fileID: 7826251674069745551}
+  - {fileID: 8086427595937363539}
+  - {fileID: 5480260700743548527}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -164,8 +225,8 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.4588622, y: 0.87550455}
-  m_EdgeRadius: 0.09
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!198 &5366098613524179518
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -4887,7 +4948,7 @@ MonoBehaviour:
   _target: {fileID: 5624499450862868864, guid: b4c712d70ace74a96ac5bc22734f3697, type: 3}
   maxMoveSpeed: 0
   enemyDeathDelay: 0.1
-  kickBackForce: 30
+  kickBackForce: 10
 --- !u!199 &-7136440877029468655
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -4973,7 +5034,7 @@ MonoBehaviour:
     Colour: {r: 1, g: 1, b: 1, a: 1}
     MoveSpeed: 0
     LifeTime: 1
-    Collider: {fileID: 0}
+    Collider: {fileID: 8088557963663484321}
     TimeToAdd: 6
     DamageMultiplier: 6
   - Name: Infant
@@ -4983,8 +5044,8 @@ MonoBehaviour:
       type: 3}
     Colour: {r: 1, g: 0.6871677, b: 0.1745283, a: 1}
     MoveSpeed: 7
-    LifeTime: 1.5
-    Collider: {fileID: 0}
+    LifeTime: 1.2
+    Collider: {fileID: 8443147607026977012}
     TimeToAdd: 3
     DamageMultiplier: 1.5
   - Name: Adult
@@ -4995,8 +5056,8 @@ MonoBehaviour:
     Colour: {r: 1, g: 0.17647058, b: 0.44932023, a: 1}
     MoveSpeed: 4
     LifeTime: 7
-    Collider: {fileID: 0}
-    TimeToAdd: 2
+    Collider: {fileID: 1695142061418844382}
+    TimeToAdd: 1
     DamageMultiplier: 6
   - Name: Deceased
     Sprite: {fileID: 8414478535512612329, guid: d48b7f54f66324224ae192c606014a87,
@@ -5006,7 +5067,7 @@ MonoBehaviour:
     Colour: {r: 0.56198823, g: 0.6671458, b: 0.6886792, a: 1}
     MoveSpeed: 0
     LifeTime: 4
-    Collider: {fileID: 0}
+    Collider: {fileID: 1695142061418844382}
     TimeToAdd: 1
     DamageMultiplier: 0
   - Name: Undead
@@ -5015,9 +5076,123 @@ MonoBehaviour:
     DeathSprite: {fileID: 4326287474489854147, guid: d48b7f54f66324224ae192c606014a87,
       type: 3}
     Colour: {r: 0.40926766, g: 0.2733179, b: 0.6981132, a: 1}
-    MoveSpeed: 1
+    MoveSpeed: 2
     LifeTime: 99
-    Collider: {fileID: 0}
+    Collider: {fileID: 1695142061418844382}
     TimeToAdd: -8
     DamageMultiplier: 2
   _nextPhase: 0
+--- !u!1 &6355410448085212737
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5480260700743548527}
+  - component: {fileID: 1695142061418844382}
+  m_Layer: 0
+  m_Name: Collider Adult
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &5480260700743548527
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6355410448085212737}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6445162947682492823}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &1695142061418844382
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6355410448085212737}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.0004903823}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1.0009807}
+  m_EdgeRadius: 0
+--- !u!1 &8944579693696138764
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8086427595937363539}
+  - component: {fileID: 8443147607026977012}
+  m_Layer: 0
+  m_Name: Collider Infant
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &8086427595937363539
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8944579693696138764}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6445162947682492823}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &8443147607026977012
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8944579693696138764}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.28635693}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.42728615}
+  m_EdgeRadius: 0

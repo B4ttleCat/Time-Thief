@@ -18,7 +18,7 @@ struct Phases
     public Color Colour;
     public float MoveSpeed;
     public float LifeTime;
-    public Collider2D Collider;
+    public BoxCollider2D Collider;
     public float TimeToAdd;
     public float DamageMultiplier;
 
@@ -35,6 +35,7 @@ public class PhaseController : MonoBehaviour
     // Component references
     private SpriteRenderer _sprite;
     private Enemy _enemy;
+    private BoxCollider2D _collider2D;
 
     // Phase tracking
     public int _nextPhase;
@@ -49,6 +50,7 @@ public class PhaseController : MonoBehaviour
     {
         _sprite = GetComponentInChildren<SpriteRenderer>();
         _enemy = GetComponent<Enemy>();
+        _collider2D = GetComponent<BoxCollider2D>();
     }
 
     void Start()
@@ -81,10 +83,13 @@ public class PhaseController : MonoBehaviour
     private int UpdatePhase(int newPhase)
     {
         // Update attributes
-        // _sprite.color = _phases[newPhase].Colour;
         _enemy.maxMoveSpeed = _phases[newPhase].MoveSpeed;
         _nextTransitionTime = _phases[newPhase].LifeTime;
         _sprite.sprite = _phases[newPhase].Sprite;
+        
+        // This doesn't work
+        // todo move colliders to parent and enable/disable on phase change 
+        _collider2D = _phases[newPhase].Collider;
 
         // Increment counter for next phase
         _nextPhase++;

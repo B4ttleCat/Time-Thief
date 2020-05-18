@@ -141,6 +141,9 @@ public class Enemy : MonoBehaviour
         {
             PhaseController phaseController = GetComponent<PhaseController>();
             
+            // Physics
+            _rb.velocity = Vector2.zero;  // Don't contribute to knockback force variable
+
             // Sprite swap
             phaseController.UseDeathSprite();
 
