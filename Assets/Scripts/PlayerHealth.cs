@@ -9,10 +9,12 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private int maxTime = 30;
     [SerializeField] private float InvincibilityTime = 0.66f;
     [SerializeField] private Color hurtColour;
+    [SerializeField] private AudioClip playerHurt;
+    [SerializeField] private AudioClip gameOver;
     
     private float _timer;
     private bool _canTakeDamage;  // Turn this to public for debugging with invincibility
-
+    private bool _isGameOver;
     void Start()
     {
         _canTakeDamage = true;
@@ -24,10 +26,13 @@ public class PlayerHealth : MonoBehaviour
     {
         UpdateTimer();
 
-        if (_timer <= 0f)
+        if (_timer <= 0f && !_isGameOver)
         {
-            // Use Action or Event here?
-            Debug.Log("Game over, man!");
+            // todo Use Action or Event here?
+            // Move this to a Game Manager
+            _isGameOver = true;
+            AudioSource.PlayClipAtPoint(gameOver, transform.position);
+            Time.timeScale = 0f;
         }
     }
 
@@ -60,6 +65,7 @@ public class PlayerHealth : MonoBehaviour
         {
             SubtractTime(other);
             StartCoroutine(SetInvincibility());
+            AudioSource.PlayClipAtPoint(playerHurt, transform.position);
         }
     }
 
