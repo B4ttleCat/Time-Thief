@@ -24,6 +24,8 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        if (GameManager.IsPaused == true) return;
+
         GetMovementInput();
         CheckSpriteXDirection();
     }

@@ -274,25 +274,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 5624499450713200211}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1029768075 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8662968507828581119, guid: 54a21e24fda634530969ab693ac037ba,
+--- !u!114 &694166504 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 694166504, guid: 54a21e24fda634530969ab693ac037ba,
     type: 3}
   m_PrefabInstance: {fileID: 8662968507751051636}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1029768076
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1029768075}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91bd73e0a3bc3421ab266ca4ebed5135, type: 3}
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cursorImage: {fileID: 2800000, guid: a6a247c65ed024975821e43238fec1a6, type: 3}
 --- !u!1 &1419089466
 GameObject:
   m_ObjectHideFlags: 0
@@ -10658,7 +10651,7 @@ PrefabInstance:
     - target: {fileID: 3123835690061021024, guid: 14b08fa9c91e54b64aecbc2f95fc8302,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.67705417
+      value: 0.6769233
       objectReference: {fileID: 0}
     - target: {fileID: 3123835690061021024, guid: 14b08fa9c91e54b64aecbc2f95fc8302,
         type: 3}
@@ -10708,7 +10701,7 @@ PrefabInstance:
     - target: {fileID: 3123835690187224223, guid: 14b08fa9c91e54b64aecbc2f95fc8302,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.67705417
+      value: 0.6769233
       objectReference: {fileID: 0}
     - target: {fileID: 3123835690187224223, guid: 14b08fa9c91e54b64aecbc2f95fc8302,
         type: 3}
@@ -10764,6 +10757,11 @@ PrefabInstance:
       propertyPath: gameOver
       value: 
       objectReference: {fileID: 8300000, guid: 879706510031f45c2bec45c4ecfe218c, type: 3}
+    - target: {fileID: 840406063905368193, guid: b4c712d70ace74a96ac5bc22734f3697,
+        type: 3}
+      propertyPath: InvincibilityTime
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4693062591952533904, guid: b4c712d70ace74a96ac5bc22734f3697,
         type: 3}
       propertyPath: m_IsTrigger
@@ -10773,6 +10771,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 5624499450862868868, guid: b4c712d70ace74a96ac5bc22734f3697,
+        type: 3}
+      propertyPath: fireRate
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 5624499450862868869, guid: b4c712d70ace74a96ac5bc22734f3697,
         type: 3}
@@ -10854,6 +10857,19 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 694166502, guid: 54a21e24fda634530969ab693ac037ba, type: 3}
+      propertyPath: m_Name
+      value: Good Luck message
+      objectReference: {fileID: 0}
+    - target: {fileID: 694166502, guid: 54a21e24fda634530969ab693ac037ba, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5955750720644168582, guid: 54a21e24fda634530969ab693ac037ba,
+        type: 3}
+      propertyPath: gameStartMessage
+      value: 
+      objectReference: {fileID: 694166504}
     - target: {fileID: 8662968507828581113, guid: 54a21e24fda634530969ab693ac037ba,
         type: 3}
       propertyPath: m_LocalPosition.x

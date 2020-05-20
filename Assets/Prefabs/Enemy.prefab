@@ -5036,7 +5036,7 @@ MonoBehaviour:
     LifeTime: 1
     Collider: {fileID: 8088557963663484321}
     TimeToAdd: 6
-    DamageMultiplier: 6
+    DamageMultiplier: 2
   - Name: Infant
     Sprite: {fileID: -860468679390908754, guid: d48b7f54f66324224ae192c606014a87,
       type: 3}

@@ -29,7 +29,7 @@ public class MouseInput : MonoBehaviour
 
         // Get vector for mouse cursor
         LookDirection = _mousePos - _rb.position;
-        
+
         // Get angle of vector to cursor from player
         Angle = Mathf.Atan2(LookDirection.y, LookDirection.x);
     }

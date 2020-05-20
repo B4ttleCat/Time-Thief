@@ -12,7 +12,7 @@ public class PlayerShooting : MonoBehaviour
     
     [Header("Gameplay")]
     [SerializeField] private float projectileForce = 40f;
-    [SerializeField] private float _fireRate = 1f;
+    [SerializeField] private float fireRate = 1f;
 
     private Rigidbody2D _rb;
     private MouseInput _mouseInput;
@@ -36,7 +36,7 @@ public class PlayerShooting : MonoBehaviour
     private void Shoot()
     {
         // Update the fire rate timer
-        _nextFire = Time.time + _fireRate;
+        _nextFire = Time.time + fireRate;
         
         // Orient the spawner to the face the mouse cursor
         projectileSpawnPoint.rotation = quaternion.Euler(0, 0, _mouseInput.Angle);
