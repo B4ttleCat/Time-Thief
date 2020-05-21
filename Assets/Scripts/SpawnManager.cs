@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using Unity.Mathematics;
+﻿using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using Random = UnityEngine.Random;
@@ -27,17 +25,25 @@ public class SpawnManager : MonoBehaviour
 
     private GameObject _enemyParent;
 
+    private void Awake()
+    {
+        Destroy(_enemyParent);
+        Debug.Log(_enemyParent);
+    }
+
     void Start()
     {
         _spawnTimer = 0f;
         _nextSpawn = 0f;
 
-        _arenaSize =  new Vector2(_arena.size.x, _arena.size.y);;
+        ArenaSize = new Vector2(_arena.cellBounds.x, _arena.cellBounds.y);
+            
 
         if (_enemyParent == null)
         {
             _enemyParent = new GameObject("Enemies");
         }
+
     }
 
     void Update()
