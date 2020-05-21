@@ -4,9 +4,9 @@
     <e p="$PROJECT_DIR$" t="IncludeRecursive">
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
-        <e p="GameManager.cs" t="Include" />
         <e p="Scripts" t="Include">
           <e p="Enemy.cs" t="Include" />
+          <e p="GameManager.cs" t="Include" />
           <e p="GameTimer.cs" t="Include" />
           <e p="MouseCursor.cs" t="Include" />
           <e p="MouseInput.cs" t="Include" />
