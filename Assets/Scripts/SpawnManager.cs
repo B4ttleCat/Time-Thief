@@ -28,7 +28,6 @@ public class SpawnManager : MonoBehaviour
     private void Awake()
     {
         Destroy(_enemyParent);
-        Debug.Log(_enemyParent);
     }
 
     void Start()

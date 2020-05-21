@@ -15,21 +15,37 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI pausedMessage;
 
     private Camera _camera;
+    private PhaseController[] enemies;
 
     private void Awake()
     {
         _camera = Camera.main;
     }
 
-    IEnumerator Start()
+    private void Start()
     {
-        PhaseController[] enemies = FindObjectsOfType<PhaseController>();
-        
-        foreach (PhaseController enemy in enemies)
+        DestroyAllEnemies(GetAllEnemies());
+        StartCoroutine(GameStartUp());
+    }
+
+    private void DestroyAllEnemies(PhaseController[] enemies)
+    {
+        for (int i = 0; i < enemies.Length; i++)
         {
-            Debug.Log(enemy.name);
+            Destroy(enemies[i].gameObject);
+            Debug.Log(enemies[i].name + " is destroyed");
         }
-        
+    }
+
+    private PhaseController[] GetAllEnemies()
+    {
+        enemies = FindObjectsOfType<PhaseController>();
+        Debug.Log(enemies.Length);
+        return enemies;
+    }
+
+    IEnumerator GameStartUp()
+    {
         // Enable/disable UI
         pausedMessage.enabled = false;
         gameStartMessage.SetActive(true);
@@ -37,7 +53,7 @@ public class GameManager : MonoBehaviour
         PauseStartGame();
         AudioSource.PlayClipAtPoint(startGameClip, transform.position);
         yield return new WaitForSecondsRealtime(startGameDelay);
-        
+
         gameStartMessage.SetActive(false);
         yield return new WaitForSecondsRealtime(1f);
         ResumeGame();
@@ -60,9 +76,21 @@ public class GameManager : MonoBehaviour
 
     private void RestartGame()
     {
+        DestroyAllEnemies(GetAllEnemies());
+        //
+        // Enemy[] enemies = FindObjectsOfType<Enemy>();
+        //
+        // Debug.Log(enemies.Length);
+        //
+        // for (int i = 0; i < enemies.Length; i++)
+        // {
+        //     Destroy(enemies[i]);
+        //     Debug.Log(enemies[i].name + " destroyed!");
+        // }
+        //
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
-    
+
     private void PauseStartGame()
     {
         Time.timeScale = 0f;
@@ -74,7 +102,7 @@ public class GameManager : MonoBehaviour
         IsPaused = true;
         Time.timeScale = 0f;
         pausedMessage.enabled = true;
-    }    
+    }
 
     private void ResumeGame()
     {

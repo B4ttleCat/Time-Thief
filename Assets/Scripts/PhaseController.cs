@@ -10,7 +10,7 @@ using UnityEngine;
 /// I generate the phases by creating an array of Structs
 /// </summary>
 [Serializable]
-struct Phases
+class Phases
 {
     public String Name;
     public Sprite Sprite;
