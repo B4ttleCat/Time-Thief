@@ -20,11 +20,6 @@ public class SpawnManager : MonoBehaviour
     private void Awake()
     {
         _arena = FindObjectOfType<Arena>();
-
-        // Don't think this is doing anything
-        // If you are reading this and it's still commented out...
-        // ...Delete it!
-        // Destroy(_enemyParent); 
     }
 
     void Start()

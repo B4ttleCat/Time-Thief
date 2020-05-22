@@ -5,6 +5,10 @@ using UnityEngine.Timeline;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public delegate void PlayerOutOfBounds(float delay);
+    public static event PlayerOutOfBounds OnPlayerOutOfBounds;
+    public bool IsOutOfBounds { get; private set; }
+
     [Header("Setup")]
     [SerializeField] private Tilemap _arena;
 
@@ -13,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] private float _playerOffsetX = 0.5f;
     [SerializeField] private float _playerOffsetY = 0.5f;
+    [SerializeField] private float _delayTimer = 1f;
 
     private Rigidbody2D _rb;
     private Vector2 _movement;
@@ -27,10 +32,6 @@ public class PlayerMovement : MonoBehaviour
         _cam = Camera.main;
         _playerSprite = GetComponentInChildren<SpriteRenderer>();
         _mouseInput = GetComponent<MouseInput>();
-    }
-
-    private void Start()
-    {
     }
 
     void Update()
@@ -51,6 +52,11 @@ public class PlayerMovement : MonoBehaviour
             playerPos.y > _arena.cellBounds.yMax - _playerOffsetY ||
             playerPos.y < _arena.cellBounds.yMin + _playerOffsetY)
         {
+            //use event/action here
+            if (OnPlayerOutOfBounds !=null)
+            {
+                OnPlayerOutOfBounds(_delayTimer);
+            }
             transform.position = Vector2.zero;
         }
     }

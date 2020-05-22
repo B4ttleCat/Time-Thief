@@ -14733,6 +14733,11 @@ PrefabInstance:
       propertyPath: _playerOffsetY
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5624499450862868869, guid: b4c712d70ace74a96ac5bc22734f3697,
+        type: 3}
+      propertyPath: _delayTimer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5624499450862868870, guid: b4c712d70ace74a96ac5bc22734f3697,
         type: 3}
       propertyPath: m_LocalPosition.x

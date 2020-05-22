@@ -7,7 +7,7 @@ public class PlayerHealth : MonoBehaviour
 {
     [SerializeField] private TimeBar _timeBar;
     [SerializeField] private int maxTime = 30;
-    [SerializeField] private float InvincibilityTime = 0.66f;
+    [SerializeField] private float _invincibilityTime = 0.66f;
     [SerializeField] private Color hurtColour;
     [SerializeField] private AudioClip playerHurt;
     [SerializeField] private AudioClip gameOver;
@@ -40,7 +40,7 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    private IEnumerator SetInvincibility()
+    private IEnumerator MakeInvincible()
     {
         _canTakeDamage = false;
 
@@ -54,7 +54,7 @@ public class PlayerHealth : MonoBehaviour
         sprite.color = hurtColour;
 
         // Keep it on for a bit...
-        yield return new WaitForSeconds(InvincibilityTime);
+        yield return new WaitForSeconds(_invincibilityTime);
 
         // turn sprite back to normal
         sprite.color = startColour;
@@ -68,7 +68,7 @@ public class PlayerHealth : MonoBehaviour
         if (other.gameObject.CompareTag("Enemy") && _canTakeDamage)
         {
             SubtractTime(other);
-            StartCoroutine(SetInvincibility());
+            StartCoroutine(MakeInvincible());
             AudioSource.PlayClipAtPoint(playerHurt, transform.position);
         }
     }
