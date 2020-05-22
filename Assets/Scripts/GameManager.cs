@@ -6,57 +6,47 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static bool IsPaused { get; private set; }
-
+    public static bool IsGameOver  { get; private set; }
+    
     [Header("Setup")]
     [SerializeField] private AudioClip startGameClip;
+    [SerializeField] private AudioClip gameOverClip;
 
     [SerializeField] private float startGameDelay = 3f;
     [SerializeField] private GameObject gameStartMessage;
     [SerializeField] private TextMeshProUGUI pausedMessage;
 
     private Camera _camera;
-    private PhaseController[] enemies;
+    private AudioSource _audioSource;
 
     private void Awake()
     {
         _camera = Camera.main;
+        _audioSource = GetComponent<AudioSource>();
     }
 
-    private void Start()
-    {
-        DestroyAllEnemies(GetAllEnemies());
-        StartCoroutine(GameStartUp());
-    }
-
-    private void DestroyAllEnemies(PhaseController[] enemies)
-    {
-        for (int i = 0; i < enemies.Length; i++)
-        {
-            Destroy(enemies[i].gameObject);
-            Debug.Log(enemies[i].name + " is destroyed");
-        }
-    }
-
-    private PhaseController[] GetAllEnemies()
-    {
-        enemies = FindObjectsOfType<PhaseController>();
-        Debug.Log(enemies.Length);
-        return enemies;
-    }
-
-    IEnumerator GameStartUp()
+    IEnumerator Start()
     {
         // Enable/disable UI
         pausedMessage.enabled = false;
         gameStartMessage.SetActive(true);
 
         PauseStartGame();
-        AudioSource.PlayClipAtPoint(startGameClip, transform.position);
+        
+        PlayAudioClip(startGameClip);
+
         yield return new WaitForSecondsRealtime(startGameDelay);
 
         gameStartMessage.SetActive(false);
         yield return new WaitForSecondsRealtime(1f);
+
         ResumeGame();
+    }
+
+    private void PlayAudioClip(AudioClip clip)
+    {
+        _audioSource.clip = clip;
+        _audioSource.Play();
     }
 
     void Update()
@@ -74,20 +64,16 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void GameOver()
+    {
+        IsGameOver = true;
+        Time.timeScale = 0f;
+        
+        PlayAudioClip(gameOverClip);
+    }
+
     private void RestartGame()
     {
-        DestroyAllEnemies(GetAllEnemies());
-        //
-        // Enemy[] enemies = FindObjectsOfType<Enemy>();
-        //
-        // Debug.Log(enemies.Length);
-        //
-        // for (int i = 0; i < enemies.Length; i++)
-        // {
-        //     Destroy(enemies[i]);
-        //     Debug.Log(enemies[i].name + " destroyed!");
-        // }
-        //
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 

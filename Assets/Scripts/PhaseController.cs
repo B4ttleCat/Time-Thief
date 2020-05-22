@@ -10,7 +10,7 @@ using UnityEngine;
 /// I generate the phases by creating an array of Structs
 /// </summary>
 [Serializable]
-class Phases
+struct Phases
 {
     public String Name;
     public Sprite Sprite;
@@ -35,11 +35,12 @@ public class PhaseController : MonoBehaviour
     // Component references
     private SpriteRenderer _sprite;
     private Enemy _enemy;
-    private BoxCollider2D _collider2D;
-
+    private BoxCollider2D _collider2D; // not entirely sure this is working properly
+    private ParticleSystem _ps;
+    
     // Phase tracking
     public int _nextPhase;
-    public int CurrentPhase { get; private set; }
+    private int _currentPhase;
     private bool _hasReachedFinalEvolution;
 
     // Timers
@@ -51,6 +52,7 @@ public class PhaseController : MonoBehaviour
         _sprite = GetComponentInChildren<SpriteRenderer>();
         _enemy = GetComponent<Enemy>();
         _collider2D = GetComponent<BoxCollider2D>();
+        _ps = GetComponent<ParticleSystem>();
     }
 
     void Start()
@@ -71,12 +73,12 @@ public class PhaseController : MonoBehaviour
         {
             _timer = 0f;
 
-            if (CurrentPhase >= _phases.Length)
+            if (_currentPhase >= _phases.Length)
             {
                 _hasReachedFinalEvolution = true;
             }
 
-            CurrentPhase = UpdatePhase(_nextPhase);
+            _currentPhase = UpdatePhase(_nextPhase);
         }
     }
 
@@ -86,6 +88,9 @@ public class PhaseController : MonoBehaviour
         _enemy.maxMoveSpeed = _phases[newPhase].MoveSpeed;
         _nextTransitionTime = _phases[newPhase].LifeTime;
         _sprite.sprite = _phases[newPhase].Sprite;
+        _collider2D = _phases[newPhase].Collider;
+        var main = _ps.main;
+        main.startColor = _phases[newPhase].Colour;
         
         // This doesn't work
         // todo move colliders to parent and enable/disable on phase change 
@@ -99,11 +104,11 @@ public class PhaseController : MonoBehaviour
 
     public float GetCurrentPhaseScoreMultiplier()
     {
-        return _phases[CurrentPhase].DamageDealt;
+        return _phases[_currentPhase].DamageDealt;
     }
     
     public void UseDeathSprite ()
     {
-        _sprite.sprite = _phases[CurrentPhase].DeathSprite;
+        _sprite.sprite = _phases[_currentPhase].DeathSprite;
     }
 }

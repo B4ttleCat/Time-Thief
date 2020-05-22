@@ -70,7 +70,7 @@ public class SpawnManager : MonoBehaviour
 
     private bool CanSpawn()
     {
-        _spawnTimer = Time.time;
+        _spawnTimer = Time.timeSinceLevelLoad;
 
         if (_spawnTimer > _nextSpawn)
         {

@@ -15,6 +15,13 @@ public class PlayerHealth : MonoBehaviour
     private float _timer;
     private bool _canTakeDamage;  // Turn this to public for debugging with invincibility
     private bool _isGameOver;
+    private GameManager _gameManager;
+
+    private void Awake()
+    {
+        _gameManager = FindObjectOfType<GameManager>();
+    }
+
     void Start()
     {
         _canTakeDamage = true;
@@ -26,13 +33,10 @@ public class PlayerHealth : MonoBehaviour
     {
         UpdateTimer();
 
-        if (_timer <= 0f && !_isGameOver)
+        if (_timer <= 0f && !GameManager.IsGameOver)
         {
             // todo Use Action or Event here?
-            // Move this to a Game Manager
-            _isGameOver = true;
-            AudioSource.PlayClipAtPoint(gameOver, transform.position);
-            Time.timeScale = 0f;
+            _gameManager.GameOver();
         }
     }
 
