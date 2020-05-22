@@ -6,8 +6,6 @@ using Random = UnityEngine.Random;
 public class SpawnManager : MonoBehaviour
 {
     [Header("Setup")]
-    [SerializeField] private Tilemap _arena;
-
     [SerializeField] private GameObject _enemyPrefab;
 
     [Header("Gameplay")]
@@ -15,29 +13,25 @@ public class SpawnManager : MonoBehaviour
 
     private float _spawnTimer;
     private float _nextSpawn;
-    private Vector2 _arenaSize;
-
-    public Vector2 ArenaSize
-    {
-        get { return _arenaSize; }
-        private set { _arenaSize = value; }
-    }
+    private Arena _arena;
 
     private GameObject _enemyParent;
 
     private void Awake()
     {
-        Destroy(_enemyParent);
+        _arena = FindObjectOfType<Arena>();
+
+        // Don't think this is doing anything
+        // If you are reading this and it's still commented out...
+        // ...Delete it!
+        // Destroy(_enemyParent); 
     }
 
     void Start()
     {
         _spawnTimer = 0f;
         _nextSpawn = 0f;
-
-        ArenaSize = new Vector2(_arena.cellBounds.x, _arena.cellBounds.y);
-            
-
+        
         if (_enemyParent == null)
         {
             _enemyParent = new GameObject("Enemies");
@@ -62,8 +56,8 @@ public class SpawnManager : MonoBehaviour
 
     private Vector2 GetRandomSpawnPos()
     {
-        float randomXPos = Random.Range((-_arenaSize.x * 0.5f) + 2, (_arenaSize.x * 0.5f) - 2);
-        float randomYPos = Random.Range((-_arenaSize.y * 0.5f) + 2, (_arenaSize.y * 0.5f) - 2);
+        float randomXPos = Random.Range((-_arena.Size.x * 0.5f) + 2, (_arena.Size.x * 0.5f) - 2);
+        float randomYPos = Random.Range((-_arena.Size.y * 0.5f) + 2, (_arena.Size.y * 0.5f) - 2);
         Vector2 randomPos = new Vector2(randomXPos, randomYPos);
         return randomPos;
     }

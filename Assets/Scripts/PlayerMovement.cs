@@ -1,14 +1,25 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
+using UnityEngine.Tilemaps;
+using UnityEngine.Timeline;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [Header("Setup")]
+    [SerializeField] private Tilemap _arena;
+
+    [Header("Gameplay")]
     [SerializeField] private float _speed = 10f;
+
+    [SerializeField] private float _playerOffsetX = 0.5f;
+    [SerializeField] private float _playerOffsetY = 0.5f;
 
     private Rigidbody2D _rb;
     private Vector2 _movement;
     private Camera _cam;
     private SpriteRenderer _playerSprite;
     private MouseInput _mouseInput;
+    private Vector2 _arenaSize;
 
     void Awake()
     {
@@ -18,12 +29,30 @@ public class PlayerMovement : MonoBehaviour
         _mouseInput = GetComponent<MouseInput>();
     }
 
+    private void Start()
+    {
+    }
+
     void Update()
     {
         if (GameManager.IsPaused == true) return;
 
         GetMovementInput();
         CheckSpriteXDirection();
+        CheckPlayerPos();
+    }
+
+    private void CheckPlayerPos()
+    {
+        Vector2 playerPos = transform.position;
+
+        if (playerPos.x > _arena.cellBounds.xMax - _playerOffsetX ||
+            playerPos.x < _arena.cellBounds.xMin + _playerOffsetX ||
+            playerPos.y > _arena.cellBounds.yMax - _playerOffsetY ||
+            playerPos.y < _arena.cellBounds.yMin + _playerOffsetY)
+        {
+            transform.position = Vector2.zero;
+        }
     }
 
     private void GetMovementInput()
