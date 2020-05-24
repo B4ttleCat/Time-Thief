@@ -16,6 +16,7 @@
           <e p="PlayerMovement.cs" t="Include" />
           <e p="PlayerShooting.cs" t="Include" />
           <e p="Projectile.cs" t="Include" />
+          <e p="ScoreKeeper.cs" t="Include" />
           <e p="SpawnManager.cs" t="Include" />
           <e p="TimeBar.cs" t="Include" />
         </e>

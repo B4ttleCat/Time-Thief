@@ -12,7 +12,7 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private AudioClip playerHurt;
     [SerializeField] private AudioClip gameOver;
     
-    private float _timer;
+    private float _healthTimer;
     private bool _canTakeDamage;  // Turn this to public for debugging with invincibility
     private bool _isGameOver;
     private GameManager _gameManager;
@@ -25,15 +25,15 @@ public class PlayerHealth : MonoBehaviour
     void Start()
     {
         _canTakeDamage = true;
-        _timer = maxTime;
+        _healthTimer = maxTime;
         _timeBar.SetMaxTime(maxTime);
     }
 
     void Update()
     {
-        UpdateTimer();
+        UpdateHealthTimer();
 
-        if (_timer <= 0f && !GameManager.IsGameOver)
+        if (_healthTimer <= 0f && !GameManager.IsGameOver)
         {
             // todo Use Action or Event here?
             _gameManager.GameOver();
@@ -81,27 +81,27 @@ public class PlayerHealth : MonoBehaviour
         float timeToSubtract = phaseController.GetCurrentPhaseScoreMultiplier();
         
         // subtract it from the timer
-        UpdateTimer(-timeToSubtract);
+        UpdateHealthTimer(-timeToSubtract);
     }
 
     public void AddTime(GameObject enemy, float timeAdjustment)
     {
         // Add it to the timer
-        UpdateTimer(timeAdjustment);
+        UpdateHealthTimer(timeAdjustment);
     }
 
     // Use this in regular timer countdown
-    private void UpdateTimer()
+    private void UpdateHealthTimer()
     {
-        _timer -= Time.deltaTime;
-        _timeBar.SetTime(_timer);
+        _healthTimer -= Time.deltaTime;
+        _timeBar.SetTime(_healthTimer);
     }
 
     // Use this one when enemy damages player or player kills enemy
-    private void UpdateTimer(float time)
+    private void UpdateHealthTimer(float time)
     {
-        _timer += time;
-        if (_timer > maxTime) _timer = maxTime;
-        _timeBar.SetTime(_timer);
+        _healthTimer += time;
+        if (_healthTimer > maxTime) _healthTimer = maxTime;
+        _timeBar.SetTime(_healthTimer);
     }
 }

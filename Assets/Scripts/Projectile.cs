@@ -17,7 +17,6 @@ public class Projectile : MonoBehaviour
 
     private void Start()
     {
-        
         // Use this if performance goes to shit
         Destroy(gameObject, 15f);
     }

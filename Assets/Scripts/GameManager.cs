@@ -18,11 +18,13 @@ public class GameManager : MonoBehaviour
 
     private Camera _camera;
     private AudioSource _audioSource;
+    private ScoreKeeper _scoreKeeper;
 
     private void Awake()
     {
         _camera = Camera.main;
         _audioSource = GetComponent<AudioSource>();
+        _scoreKeeper = FindObjectOfType<ScoreKeeper>();
     }
 
     IEnumerator Start()
@@ -70,6 +72,7 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0f;
         
         PlayAudioClip(gameOverClip);
+        
     }
 
     private void RestartGame()
@@ -79,8 +82,8 @@ public class GameManager : MonoBehaviour
 
     private void PauseStartGame()
     {
-        Time.timeScale = 0f;
         IsPaused = true;
+        Time.timeScale = 0f;
     }
 
     private void PauseGame()
