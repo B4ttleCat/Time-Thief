@@ -1,4 +1,5 @@
-﻿using Unity.Mathematics;
+﻿using System.Collections;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using Random = UnityEngine.Random;
@@ -14,9 +15,19 @@ public class SpawnManager : MonoBehaviour
     private float _spawnTimer;
     private float _nextSpawn;
     private Arena _arena;
-
     private GameObject _enemyParent;
+    private bool _spawnDisabled;
 
+    private void OnEnable()
+    {
+        PlayerMovement.OnPlayerOutOfBounds += DisableSpawning;
+    }
+
+    private void OnDisable()
+    {
+        PlayerMovement.OnPlayerOutOfBounds -= DisableSpawning;
+    }
+    
     private void Awake()
     {
         _arena = FindObjectOfType<Arena>();
@@ -36,7 +47,9 @@ public class SpawnManager : MonoBehaviour
 
     void Update()
     {
-        if (CanSpawn())
+        if (_spawnDisabled) return;
+        
+        if (IsAllowedToSpawn())
         {
             SpawnEnemy();
         }
@@ -57,7 +70,7 @@ public class SpawnManager : MonoBehaviour
         return randomPos;
     }
 
-    private bool CanSpawn()
+    private bool IsAllowedToSpawn()
     {
         _spawnTimer = Time.timeSinceLevelLoad;
 
@@ -68,5 +81,17 @@ public class SpawnManager : MonoBehaviour
         }
 
         return false;
+    }
+
+    private void DisableSpawning(float delay)
+    {
+        StartCoroutine(DelayTimer(delay));
+    }
+    
+    private IEnumerator DelayTimer(float delay)
+    {
+        _spawnDisabled = true;
+        yield return new WaitForSecondsRealtime(delay);
+        _spawnDisabled = false;
     }
 }
