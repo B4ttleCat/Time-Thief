@@ -2,19 +2,24 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
     public static bool IsPaused { get; private set; }
     public static bool IsGameOver  { get; private set; }
     
-    [Header("Setup")]
+    [Header("Start Game")]
     [SerializeField] private AudioClip startGameClip;
-    [SerializeField] private AudioClip gameOverClip;
-
     [SerializeField] private float startGameDelay = 3f;
     [SerializeField] private GameObject gameStartMessage;
-    [SerializeField] private TextMeshProUGUI pausedMessage;
+
+    [Header("Paused")]
+    [SerializeField] private GameObject pausedMessage;
+    
+    [Header("Game Over")]
+    [SerializeField] private AudioClip gameOverClip;
+    [SerializeField] private GameObject gameOverScreen;
 
     private Camera _camera;
     private AudioSource _audioSource;
@@ -30,7 +35,8 @@ public class GameManager : MonoBehaviour
     IEnumerator Start()
     {
         // Enable/disable UI
-        pausedMessage.enabled = false;
+        gameOverScreen.SetActive(false);
+        pausedMessage.SetActive(false);
         gameStartMessage.SetActive(true);
 
         PauseStartGame();
@@ -72,7 +78,7 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0f;
         
         PlayAudioClip(gameOverClip);
-        
+        gameOverScreen.SetActive(true);
     }
 
     private void RestartGame()
@@ -90,13 +96,13 @@ public class GameManager : MonoBehaviour
     {
         IsPaused = true;
         Time.timeScale = 0f;
-        pausedMessage.enabled = true;
+        pausedMessage.SetActive(true);
     }
 
     private void ResumeGame()
     {
         IsPaused = false;
         Time.timeScale = 1f;
-        pausedMessage.enabled = false;
+        pausedMessage.SetActive(false);
     }
 }
