@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections;
 using UnityEngine;
-using UnityEngine.Rendering;
+using Random = UnityEngine.Random;
 
 public class Enemy : MonoBehaviour
 {
@@ -14,6 +12,8 @@ public class Enemy : MonoBehaviour
 
     [SerializeField] private float enemyDeathDelay;
     [SerializeField] private float kickBackForce = 20f;
+
+    [SerializeField] private AudioClip enemyHasBeenShot;
 
     // Enemy
     private Rigidbody2D _rb;
@@ -89,7 +89,7 @@ public class Enemy : MonoBehaviour
     {
         _canMove = false;
         yield return new WaitForSecondsRealtime(delay);
-        _canMove= true;
+        _canMove = true;
     }
 
     private void CheckSpriteXDirection()
@@ -108,7 +108,7 @@ public class Enemy : MonoBehaviour
     private void PauseMovement(float delay)
     {
         StartCoroutine(DelayTimer(delay));
-        
+
         // todo instead of stopping enemy movement, perhaps make time slow down to help player reposition better
     }
 
@@ -140,7 +140,10 @@ public class Enemy : MonoBehaviour
 
             // FX
             _particleSystem.Play();
-            _particleSystem.transform.parent = null;
+            // _particleSystem.transform.parent = null;
+
+            // Audio
+            PlayAudio();
 
             // Add Time to clock
             FindObjectOfType<PlayerHealth>().AddTime(gameObject, phaseController.GetCurrentPhaseScoreMultiplier());
@@ -150,5 +153,14 @@ public class Enemy : MonoBehaviour
             phaseController.enabled = false;
             // StartCoroutine(DeathDelayTimer());
         }
+    }
+
+    private void PlayAudio()
+    {
+        AudioSource audioSource = GetComponent<AudioSource>();
+        audioSource.clip = enemyHasBeenShot;
+        float randomPitch = Random.Range(0.95f, 1.05f);
+        audioSource.pitch = randomPitch;
+        audioSource.Play();
     }
 }

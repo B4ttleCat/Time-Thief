@@ -3,12 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class PlayerShooting : MonoBehaviour
 {
     [Header("Setup")]
     [SerializeField] private Transform projectileSpawnPoint;
     [SerializeField] private GameObject projectilePrefab;
+    [SerializeField] private AudioClip playerFired;
     
     [Header("Gameplay")]
     [SerializeField] private float projectileForce = 40f;
@@ -16,11 +18,12 @@ public class PlayerShooting : MonoBehaviour
 
     private Rigidbody2D _rb;
     private MouseInput _mouseInput;
-
+    private AudioSource _audioSource;
     private float _nextFire = 0f;
     
     void Awake()
     {
+        _audioSource = GetComponent<AudioSource>();
         _rb = GetComponent<Rigidbody2D>();
         _mouseInput = GetComponent<MouseInput>();
     }
@@ -47,5 +50,16 @@ public class PlayerShooting : MonoBehaviour
         // Add force to projectile
         Rigidbody2D projectileRb = projectile.GetComponent<Rigidbody2D>();
         projectileRb.AddForce(projectileSpawnPoint.right * projectileForce, ForceMode2D.Impulse);
+        
+        // SFX
+        PlayAudio();
+    }
+
+    private void PlayAudio()
+    {
+        _audioSource.clip = playerFired;
+        float randomPitch = Random.Range(0.95f, 1.05f);
+        _audioSource.pitch = randomPitch;
+        _audioSource.Play();
     }
 }

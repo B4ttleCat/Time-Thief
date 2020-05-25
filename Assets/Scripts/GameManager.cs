@@ -39,6 +39,8 @@ public class GameManager : MonoBehaviour
         pausedMessage.SetActive(false);
         gameStartMessage.SetActive(true);
 
+        IsGameOver = false;
+            
         PauseStartGame();
         
         PlayAudioClip(startGameClip);

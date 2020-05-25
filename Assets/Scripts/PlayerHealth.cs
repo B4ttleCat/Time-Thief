@@ -10,7 +10,6 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private float _invincibilityTime = 0.66f;
     [SerializeField] private Color hurtColour;
     [SerializeField] private AudioClip playerHurt;
-    [SerializeField] private AudioClip gameOver;
     
     private float _healthTimer;
     private bool _canTakeDamage;  // Turn this to public for debugging with invincibility
