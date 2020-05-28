@@ -17,7 +17,7 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] private float _playerOffsetX = 0.5f;
     [SerializeField] private float _playerOffsetY = 0.5f;
-    [SerializeField] private float _delayTimer = 1f;
+    [SerializeField] private float _respawnDelay = 1f;
 
     private Rigidbody2D _rb;
     private Vector2 _movement;
@@ -55,7 +55,7 @@ public class PlayerMovement : MonoBehaviour
             //use event/action here
             if (OnPlayerOutOfBounds !=null)
             {
-                OnPlayerOutOfBounds(_delayTimer);
+                OnPlayerOutOfBounds(_respawnDelay);
             }
             transform.position = Vector2.zero;
         }

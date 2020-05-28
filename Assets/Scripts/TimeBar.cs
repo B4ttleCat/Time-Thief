@@ -7,11 +7,11 @@ public class TimeBar : MonoBehaviour
 {
     [SerializeField] private Slider _slider;
 
-
     public void SetMaxTime(float time)
     {
+        Debug.Log(time + " passed to max score");
         _slider.maxValue = time;
-        _slider.value = time;
+        _slider.value = _slider.maxValue;
     }
 
     public void SetTime(float time)

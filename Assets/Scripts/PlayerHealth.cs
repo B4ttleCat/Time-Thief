@@ -13,11 +13,13 @@ public class PlayerHealth : MonoBehaviour
     
     private float _healthTimer;
     private bool _canTakeDamage;  // Turn this to public for debugging with invincibility
-    private bool _isGameOver;
+    // private bool _isGameOver;
     private GameManager _gameManager;
+    private AudioSource _audioSource;
 
     private void Awake()
     {
+        _audioSource = GetComponent<AudioSource>();
         _gameManager = FindObjectOfType<GameManager>();
     }
 
@@ -30,6 +32,7 @@ public class PlayerHealth : MonoBehaviour
 
     void Update()
     {
+        if (GameManager.IsGameOver) return;
         UpdateHealthTimer();
 
         if (_healthTimer <= 0f && !GameManager.IsGameOver)
@@ -68,7 +71,8 @@ public class PlayerHealth : MonoBehaviour
         {
             SubtractTime(other);
             StartCoroutine(MakeInvincible());
-            AudioSource.PlayClipAtPoint(playerHurt, transform.position);
+            _audioSource.clip = playerHurt;
+            _audioSource.Play();
         }
     }
 

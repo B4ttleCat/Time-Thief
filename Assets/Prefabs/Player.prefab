@@ -145,7 +145,7 @@ MonoBehaviour:
   _speed: 7
   _playerOffsetX: 0.1
   _playerOffsetY: 0.3
-  _delayTimer: 1
+  _respawnDelay: 1
 --- !u!114 &5624499450862868868
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -180,7 +180,7 @@ MonoBehaviour:
     type: 3}
   maxTime: 30
   _invincibilityTime: 0.66
-  hurtColour: {r: 0.36078432, g: 0.18823531, b: 0.46274513, a: 1}
+  hurtColour: {r: 0, g: 0, b: 0, a: 1}
   playerHurt: {fileID: 8300000, guid: 87054d1e0fa6c4cb69327644356eec8e, type: 3}
 --- !u!82 &6344157875482902691
 AudioSource:

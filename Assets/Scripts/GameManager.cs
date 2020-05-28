@@ -63,6 +63,7 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P))
         {
+            if (IsGameOver) return;
             if (IsPaused == false) PauseGame();
             else ResumeGame();
         }
