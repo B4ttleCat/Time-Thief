@@ -167,7 +167,6 @@ public class Enemy : MonoBehaviour
             // Death
             _isDead = true;
             phaseController.enabled = false;
-            // StartCoroutine(DeathDelayTimer());
         }
     }
 

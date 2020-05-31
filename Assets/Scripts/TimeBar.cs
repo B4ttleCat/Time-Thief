@@ -9,7 +9,6 @@ public class TimeBar : MonoBehaviour
 
     public void SetMaxTime(float time)
     {
-        Debug.Log(time + " passed to max score");
         _slider.maxValue = time;
         _slider.value = _slider.maxValue;
     }
