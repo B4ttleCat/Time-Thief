@@ -4947,10 +4947,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _target: {fileID: 5624499450862868864, guid: b4c712d70ace74a96ac5bc22734f3697, type: 3}
+  enemyHasBeenShot: {fileID: 8300000, guid: 23ca533377f9144409740d4775105983, type: 3}
+  undeadHasBeenShot: {fileID: 8300000, guid: e62d5d21da5e447b388c5c2a0699cd7b, type: 3}
+  timeBonus: {fileID: 7866695386105482800, guid: 375b227f8f7504083bfd80363eeef96f,
+    type: 3}
+  timePenalty: {fileID: 1258821614821770301, guid: b4ea4cec601304d36aac3fb6084c66f7,
+    type: 3}
   maxMoveSpeed: 0
   enemyDeathDelay: 0.1
   kickBackForce: 10
-  enemyHasBeenShot: {fileID: 8300000, guid: 23ca533377f9144409740d4775105983, type: 3}
 --- !u!199 &-7136440877029468655
 ParticleSystemRenderer:
   serializedVersion: 6

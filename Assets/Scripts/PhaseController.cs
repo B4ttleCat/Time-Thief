@@ -40,7 +40,7 @@ public class PhaseController : MonoBehaviour
     
     // Phase tracking
     public int _nextPhase;
-    private int _currentPhase;
+    public int CurrentPhase { get; private set; }
     private bool _hasReachedFinalEvolution;
 
     // Timers
@@ -73,12 +73,12 @@ public class PhaseController : MonoBehaviour
         {
             _timer = 0f;
 
-            if (_currentPhase >= _phases.Length)
+            if (CurrentPhase >= _phases.Length)
             {
                 _hasReachedFinalEvolution = true;
             }
 
-            _currentPhase = UpdatePhase(_nextPhase);
+            CurrentPhase = UpdatePhase(_nextPhase);
         }
     }
 
@@ -104,11 +104,11 @@ public class PhaseController : MonoBehaviour
 
     public float GetCurrentPhaseScoreMultiplier()
     {
-        return _phases[_currentPhase].DamageDealt;
+        return _phases[CurrentPhase].DamageDealt;
     }
     
     public void UseDeathSprite ()
     {
-        _sprite.sprite = _phases[_currentPhase].DeathSprite;
+        _sprite.sprite = _phases[CurrentPhase].DeathSprite;
     }
 }

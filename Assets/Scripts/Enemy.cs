@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using Unity.Mathematics;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -7,13 +8,16 @@ public class Enemy : MonoBehaviour
     [Header("Setup")]
     [SerializeField] private GameObject _target;
 
+    [SerializeField] private AudioClip enemyHasBeenShot;
+    [SerializeField] private AudioClip undeadHasBeenShot;
+    [SerializeField] private GameObject timeBonus;
+    [SerializeField] private GameObject timePenalty;
+
     [Header("Gameplay")]
     public float maxMoveSpeed;
 
     [SerializeField] private float enemyDeathDelay;
     [SerializeField] private float kickBackForce = 20f;
-
-    [SerializeField] private AudioClip enemyHasBeenShot;
 
     // Enemy
     private Rigidbody2D _rb;
@@ -140,10 +144,22 @@ public class Enemy : MonoBehaviour
 
             // FX
             _particleSystem.Play();
-            // _particleSystem.transform.parent = null;
+            AudioClip audioClip;
+            GameObject indicator;
 
-            // Audio
-            PlayAudio();
+            if (phaseController.CurrentPhase == 4) // 4 = undead
+            {
+                audioClip = undeadHasBeenShot;
+                indicator = timePenalty;
+            }
+            else
+            {
+                audioClip = enemyHasBeenShot;
+                indicator = timeBonus;
+            }
+
+            Instantiate(indicator, transform.position, quaternion.identity);
+            PlayAudio(audioClip);
 
             // Add Time to clock
             FindObjectOfType<PlayerHealth>().AddTime(gameObject, phaseController.GetCurrentPhaseScoreMultiplier());
@@ -155,10 +171,10 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    private void PlayAudio()
+    private void PlayAudio(AudioClip audioClip)
     {
         AudioSource audioSource = GetComponent<AudioSource>();
-        audioSource.clip = enemyHasBeenShot;
+        audioSource.clip = audioClip;
         float randomPitch = Random.Range(0.95f, 1.05f);
         audioSource.pitch = randomPitch;
         audioSource.Play();

@@ -475,17 +475,17 @@ PrefabInstance:
     - target: {fileID: 840406063905368193, guid: b4c712d70ace74a96ac5bc22734f3697,
         type: 3}
       propertyPath: hurtColour.r
-      value: 0.5625
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 840406063905368193, guid: b4c712d70ace74a96ac5bc22734f3697,
         type: 3}
       propertyPath: hurtColour.g
-      value: 0
+      value: 0.25943398
       objectReference: {fileID: 0}
     - target: {fileID: 840406063905368193, guid: b4c712d70ace74a96ac5bc22734f3697,
         type: 3}
       propertyPath: hurtColour.b
-      value: 1
+      value: 0.75120515
       objectReference: {fileID: 0}
     - target: {fileID: 840406063905368193, guid: b4c712d70ace74a96ac5bc22734f3697,
         type: 3}
