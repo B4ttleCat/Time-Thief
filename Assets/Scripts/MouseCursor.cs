@@ -8,7 +8,8 @@ public class MouseCursor : MonoBehaviour
     
     void Start()
     {
-        Cursor.SetCursor(cursorImage, Vector2.zero, CursorMode.ForceSoftware);    
+        Vector2 cursorHotspot = new Vector2 (cursorImage.width / 2, cursorImage.height / 2);
+        Cursor.SetCursor(cursorImage, cursorHotspot, CursorMode.ForceSoftware);    
     }
 
 }

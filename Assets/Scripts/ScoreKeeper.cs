@@ -33,7 +33,7 @@ public class ScoreKeeper : MonoBehaviour
     private void UpdateGameTimer()
     {
         _gameTimer = Time.timeSinceLevelLoad * 1000;
-        _scoreText.text = _gameTimer.ToString("F3");
+        _scoreText.text = Mathf.RoundToInt(_gameTimer).ToString();
     }
 
     private void CheckHighScore(float gameTotalTime)
@@ -47,7 +47,7 @@ public class ScoreKeeper : MonoBehaviour
     
     private void UpdateHighScoreText(float newHighScore)
     {
-        highScoreText.text = "HI " + newHighScore.ToString();
+        highScoreText.text = "HI " + Mathf.RoundToInt(newHighScore).ToString();
     }
 
     public void SetHighScore(float newHighScore)
